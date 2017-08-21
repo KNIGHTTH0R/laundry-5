@@ -14,3 +14,18 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('index', 'IndexController@index');
+
+Route::get('register', 'IndexController@get');
+
+Route::post('register', 'IndexController@post');
+
+// Route::get('index', function(){
+// 	return "working";
+// });
+
+Route::get('home', function(){
+	return view('home');
+});
