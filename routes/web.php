@@ -12,5 +12,13 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
+});
+
+Route::get('/orders', 'OrderController@get');
+
+Route::post('/orders', 'OrderController@post');
+
+Route::any('/error', function () {
+    return view('error');
 });

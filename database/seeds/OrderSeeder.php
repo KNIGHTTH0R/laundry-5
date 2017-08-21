@@ -20,8 +20,8 @@ class OrderSeeder extends Seeder
                 'laundry' => $i,
                 'ironing' => $i,
                 'price' => $i*10,
-                'delivery' => '2017-01-01',
-                'pickup' => '2017-01-05',
+                'pickup' => '2017-01-01',
+                'delivery' => '2017-01-05',
                 'notes' => 'notes' . $i,
             ]);
         }
