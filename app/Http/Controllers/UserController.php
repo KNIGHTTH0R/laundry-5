@@ -8,8 +8,10 @@ use App\Http\Controllers\Controller;
 class IndexController extends Controller {
 
     public function index() {
+        // this method can connect to mysql database
         $users = DB::select('select * from users');
 
+        // input the $users into user view
         return view('user', ['users' => $users]);
     }
 
