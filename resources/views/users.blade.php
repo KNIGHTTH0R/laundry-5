@@ -3,6 +3,7 @@
 @section('title') User @endsection
 
 @section('content')
+<!-- This page can display all users' data from database -->
 <table>
     <tr>
         <th>Firstname</th>
