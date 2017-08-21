@@ -22,7 +22,6 @@ class OrderController extends Controller {
      * @return type
      */
     public function createOrder(Request $request) {
-        // create a new order
         $order = new Order;
         $order->user_id = $request->user_id;
         $order->laundry = $request->laundry;

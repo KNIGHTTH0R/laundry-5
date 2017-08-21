@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 
 @section('title') Home @endsection
@@ -38,9 +37,8 @@
         </tr>
         <tr>
             <td></td>
-            <td><input type="submit" value="submit" /></td>
+            <td><input type="submit" value="Submit" /></td>
         </tr>
     </table>
 </form>
-
 @endsection

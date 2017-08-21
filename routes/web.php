@@ -11,18 +11,21 @@
 |
 */
 
+// View home page
 Route::get('/', function () {
     return view('home');
 });
 
+// View all orders
 Route::get('orders', 'OrderController@orders');
-
+// Create new order
 Route::post('orders', 'OrderController@createOrder');
-
+// View all users
 Route::get('users', 'UserController@users');
-
+// View register form
 Route::get('register', 'UserController@register');
 
+// View error page
 Route::any('error', function () {
     return view('error');
 });
