@@ -11,8 +11,9 @@ class OrderController extends Controller {
     public function get() {
         return view('orders');
     }
-    
+
     public function post(Request $request) {
+        // create a new order
         $order = new Order;
         $order->user_id = $request->user_id;
         $order->laundry = $request->laundry;
@@ -21,10 +22,12 @@ class OrderController extends Controller {
         $order->pickup = $request->pickup;
         $order->delivery = $request->delivery;
         $order->notes = $request->notes;
+
         if ($order->save()) {
             return view('orders');
         } else {
             return view('error');
         }
     }
+
 }

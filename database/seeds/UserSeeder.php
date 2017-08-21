@@ -17,7 +17,7 @@ class UserSeeder extends Seeder {
             User::create([
                 'firstname' => 'firstname' . $i,
                 'lastname' => 'lastname' . $i,
-                'email' => 'email' . $i. '@uts.edu.au',
+                'email' => 'email' . $i . '@uts.edu.au',
                 'password' => 'password' . $i,
                 'phone' => '000000000' . $i,
                 'addressline1' => 'addressline1_' . $i,

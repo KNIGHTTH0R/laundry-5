@@ -19,12 +19,12 @@ Route::get('/orders', 'OrderController@get');
 
 Route::post('/orders', 'OrderController@post');
 
+Route::get('index', 'UserController@index');
+
+Route::get('register', 'UserController@get');
+
+Route::post('register', 'UserController@post');
+
 Route::any('/error', function () {
     return view('error');
 });
-
-Route::get('index', 'IndexController@index');
-
-Route::get('register', 'IndexController@get');
-
-Route::post('register', 'IndexController@post');
