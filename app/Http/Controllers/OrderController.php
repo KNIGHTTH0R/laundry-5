@@ -8,11 +8,20 @@ use App\Order;
 
 class OrderController extends Controller {
 
-    public function get() {
+    /**
+     * View all orders
+     * @return type
+     */
+    public function orders() {
         return view('orders');
     }
 
-    public function post(Request $request) {
+    /**
+     * Create a new order
+     * @param Request $request
+     * @return type
+     */
+    public function createOrder(Request $request) {
         // create a new order
         $order = new Order;
         $order->user_id = $request->user_id;

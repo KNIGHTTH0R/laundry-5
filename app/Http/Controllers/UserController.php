@@ -2,22 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\User;
 
-class IndexController extends Controller {
+class UserController extends Controller {
 
-    public function index() {
-        $users = DB::select('select * from users');
+    /**
+     * View all users
+     * @return type
+     */
+    public function users() {
+        $users = User::all();
 
-        return view('user', ['users' => $users]);
+        return view('users', ['users' => $users]);
     }
 
-    public function get() {
-        return view('register');
-    }
-
-    public function post() {
+    /**
+     * View register form
+     * @return type
+     */
+    public function register() {
         return view('register');
     }
 

@@ -15,16 +15,14 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/orders', 'OrderController@get');
+Route::get('orders', 'OrderController@orders');
 
-Route::post('/orders', 'OrderController@post');
+Route::post('orders', 'OrderController@createOrder');
 
-Route::get('index', 'UserController@index');
+Route::get('users', 'UserController@users');
 
-Route::get('register', 'UserController@get');
+Route::get('register', 'UserController@register');
 
-Route::post('register', 'UserController@post');
-
-Route::any('/error', function () {
+Route::any('error', function () {
     return view('error');
 });
