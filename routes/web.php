@@ -22,3 +22,9 @@ Route::post('/orders', 'OrderController@post');
 Route::any('/error', function () {
     return view('error');
 });
+
+Route::get('index', 'IndexController@index');
+
+Route::get('register', 'IndexController@get');
+
+Route::post('register', 'IndexController@post');
