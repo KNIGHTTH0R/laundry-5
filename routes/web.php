@@ -29,3 +29,5 @@ Route::get('register', 'UserController@register');
 Route::any('error', function () {
     return view('error');
 });
+
+Route::get('test', 'DateTestController@test');
