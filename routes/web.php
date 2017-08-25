@@ -23,11 +23,14 @@ Route::post('orders', 'OrderController@createOrder');
 // View all users
 Route::get('users', 'UserController@users');
 // View register form
-Route::get('register', 'UserController@register');
+Route::get('register', 'UserController@registerForm');
+// View 
+Route::post('register', 'UserController@register');
 
 // View error page
 Route::any('error', function () {
     return view('error');
 });
 
-Route::get('test', 'DateTestController@test');
+// The database connection test method
+// Route::get('test', 'DateTestController@test');
