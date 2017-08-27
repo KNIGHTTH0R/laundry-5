@@ -24,9 +24,12 @@ Route::post('orders', 'OrderController@createOrder');
 Route::get('users', 'UserController@users');
 // View register form
 Route::get('register', 'UserController@registerForm');
-// View 
+// Add new user to database 
 Route::post('register', 'UserController@register');
-
+// View Login page
+Route::get('login', 'LoginController@login');
+// Verify user information 
+Route::post('login', 'LoginController@verify');
 // View error page
 Route::any('error', function () {
     return view('error');

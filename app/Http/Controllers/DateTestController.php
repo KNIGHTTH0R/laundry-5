@@ -8,9 +8,9 @@ use App\Http\Controllers\Controller;
 
 class DateTestController extends Controller
 {
-    //
-    public function test(){
-    	$pdo = DB::connection()->getPdo();
-    	dd($pdo);
-    }
+    // Test getPdo() method to connect mysql to make sure the databses is working
+    // public function test(){
+    // 	$pdo = DB::connection()->getPdo();
+    // 	dd($pdo);
+    // }
 }
