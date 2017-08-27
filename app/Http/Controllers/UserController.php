@@ -22,7 +22,8 @@ class UserController extends Controller {
     }
 
     /**
-     * View register form
+     * Create a new user
+     * @param Request $request
      * @return type
      */
     public function register(Request $request) {
@@ -43,7 +44,6 @@ class UserController extends Controller {
         $user->updated_at = $request->updated_at;
 
         if($user->save()){
-            // return view('orders');
             return 'register working';
         }else{
             return view('error');
