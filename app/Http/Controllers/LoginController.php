@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 
 class LoginController extends Controller
 {
-    // Login function to link the login view
+    // Login function which link the login view
     public function login(){
     	return view('login');
     }
@@ -21,7 +21,7 @@ class LoginController extends Controller
 
     	// get password from database which username = email
     	// this method return a string 
-    	$password_db = DB::table('users')->where('email','root')->value('password');
+    	$password_db = DB::table('users')->where('email',$username_input)->value('password');
 
     	// compare two passwords 
     	if($password_input == $password_db){
