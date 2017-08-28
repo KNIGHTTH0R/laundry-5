@@ -16,7 +16,7 @@ class UserController extends Controller {
 
         return view('users', ['users' => $users]);
     }
-
+    
     /**
      * View register form
      * @return type
