@@ -4,28 +4,30 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserTable extends Migration {
+class CreateUserTable extends Migration
+{
 
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up() {
+    public function up()
+    {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('firstname', 30);
-            $table->string('lastname', 30);
-            $table->string('email', 50)->unique();
-            $table->string('password', 20);
+            $table->string('firstname', 50);
+            $table->string('lastname', 50);
+            $table->string('email', 100)->unique();
+            $table->string('password', 100);
             $table->rememberToken();
-            $table->string('phone', 20);
-            $table->string('addressline1', 100);
-            $table->string('addressline2', 100);
-            $table->string('suburb', 30);
-            $table->string('state', 20);
-            $table->string('postcode', 10);
-            $table->string('country', 20);
+            $table->string('phone', 20)->nullable();
+            $table->string('addressline1')->nullable();
+            $table->string('addressline2')->nullable();
+            $table->string('suburb', 30)->nullable();
+            $table->string('state', 30)->nullable();
+            $table->string('postcode', 20)->nullable();
+            $table->string('country', 30)->nullable();
             $table->timestamps();
         });
     }
@@ -35,7 +37,8 @@ class CreateUserTable extends Migration {
      *
      * @return void
      */
-    public function down() {
+    public function down()
+    {
         Schema::dropIfExists('users');
     }
 

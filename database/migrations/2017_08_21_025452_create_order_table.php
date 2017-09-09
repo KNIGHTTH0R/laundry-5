@@ -19,9 +19,9 @@ class CreateOrderTable extends Migration
             $table->decimal('laundry', 8, 2);
             $table->decimal('ironing', 8, 2);
             $table->decimal('price', 8, 2);
-            $table->date('delivery');
             $table->date('pickup');
-            $table->text('notes');
+            $table->date('delivery');
+            $table->text('notes')->nullable();
             $table->timestamps();
         });
     }

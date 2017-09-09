@@ -2,26 +2,39 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Order;
+use Illuminate\Http\Request;
 
-class OrderController extends Controller {
-
+class OrderController extends Controller
+{
     /**
-     * View all orders
-     * @return type
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
      */
-    public function orders() {
-        return view('orders');
+    public function index()
+    {
+        return view('order/index', ['orders' => Order::orderBy('id', 'desc')->get()]);
     }
 
     /**
-     * Create a new order
-     * @param Request $request
-     * @return type
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
      */
-    public function createOrder(Request $request) {
+    public function create()
+    {
+        return view('order/create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
         $order = new Order;
         $order->user_id = $request->user_id;
         $order->laundry = $request->laundry;
@@ -32,10 +45,9 @@ class OrderController extends Controller {
         $order->notes = $request->notes;
 
         if ($order->save()) {
-            return view('orders');
+            return view('order/index');
         } else {
             return view('error');
         }
     }
-
 }
