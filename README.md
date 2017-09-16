@@ -1,8 +1,52 @@
-# laundry
-Online Laundry Website
+# Online Laundry Website
 
+## Test Environment
+```
+PHP 7.1.7
+Laravel Framework 5.5.4
+Composer version 1.4.2
+10.1.25-MariaDB
+```
 
-Project Coding Style
+## Installation
+
+### Update Laravel installer package
+```
+composer global require "laravel/installer"
+```
+
+### Clone this project to local
+```
+git clone https://github.com/jiangxiaolhm/laundry.git
+```
+
+### Enter the project folder, install dependencies
+```
+composer install
+```
+
+### Make `.env` file
+```
+# You should modify .env file to fit your environment
+cp .env.example .env
+```
+
+### Migrate database tables
+```
+php artisan migrate
+```
+
+### Add sample data to database
+```
+php artisan db:seed
+```
+
+### Run project
+```
+php artisan serve
+```
+
+## Project Coding Style
 
 [PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
 [PSR-1]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md
