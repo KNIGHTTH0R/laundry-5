@@ -17,12 +17,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('order/create', 'OrderController@create');
-Route::get('order', 'OrderController@index');
-Route::post('order', 'OrderController@store');
-
-Route::get('user', 'UserController@index');
-Route::get('user/create', 'UserController@create');
-Route::post('user', 'UserController@store');
+Route::group(['middleware' => 'auth'], function() {
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::resource('order', 'OrderController');
+    Route::resource('user', 'UserController');
+});
