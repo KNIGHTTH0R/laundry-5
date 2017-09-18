@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class UserController extends Controller
 {
@@ -66,6 +68,8 @@ class UserController extends Controller
     public function show($id)
     {
         //
+        $user = DB::select('select * from users where id = ?',[$id]);
+        dd($user);
     }
 
     /**
@@ -89,6 +93,7 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $affected = DB::update('update users set firstname = ? where id = ?', [$request, $id]);
     }
 
     /**
@@ -100,6 +105,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+        $deleted = DB::delete('delete from users where id = ?', [$id]);
     }
 
 }
