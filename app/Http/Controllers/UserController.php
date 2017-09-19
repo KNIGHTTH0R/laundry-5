@@ -68,8 +68,8 @@ class UserController extends Controller
     public function show($id)
     {
         //
-        $user = DB::select('select * from users where id = ?',[$id]);
-        dd($user);
+        $user = User::find($id); 
+        return view('user/show', ['user' => $user]);
     }
 
     /**
@@ -81,6 +81,7 @@ class UserController extends Controller
     public function edit($id)
     {
         //
+
     }
 
     /**
@@ -93,7 +94,11 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $affected = DB::update('update users set firstname = ? where id = ?', [$request, $id]);
+        $user = User::find($id);
+        $user -> email = $request;
+        $user -> save();
+
+        return view('user/show',['user' => $user]);
     }
 
     /**
