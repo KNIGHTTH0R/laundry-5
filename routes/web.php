@@ -18,7 +18,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function() {
-    Route::get('/home', 'HomeController@index')->name('home');
-    Route::resource('order', 'OrderController');
-    Route::resource('user', 'UserController');
+    Route::get('home', 'HomeController@index')->name('home');
+    Route::resource('orders', 'OrderController');
+    Route::resource('users', 'UserController');
+});
+
+Route::any('error', function() {
+    return view('error');
 });

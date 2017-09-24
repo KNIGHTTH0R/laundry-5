@@ -6,39 +6,40 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Create New Order
+                    Edit Order
                 </div>
                 <div class="panel-body">
-                    <form action="{{ url('order') }}" method="POST">
+                    <form action="{{ url('order/'.$order->id) }}" method="POST">
+                        {{ method_field('PUT') }}
                         {!! csrf_field() !!}
                         <table>
                             <tr>
                                 <td>User ID</td>
-                                <td><input type="number" name="user_id" /></td>
+                                <td><input type="number" name="user_id" value="{{ $order->user_id }}" /></td>
                             </tr>
                             <tr>
                                 <td>Laundry (kg)</td>
-                                <td><input type="number" name="laundry" /></td>
+                                <td><input type="number" name="laundry" value="{{ $order->laundry }}" /></td>
                             </tr>
                             <tr>
                                 <td>Ironing (kg)</td>
-                                <td><input type="number" name="ironing" /></td>
+                                <td><input type="number" name="ironing" value="{{ $order->ironing }}" /></td>
                             </tr>
                             <tr>
                                 <td>Price</td>
-                                <td>(Laundry + Ironing) * 5$/kg // Use AJAX later</td>
+                                <td>Calculate using AJAX later</td>
                             </tr>
                             <tr>
                                 <td>Pickup Date</td>
-                                <td><input type="date" name="pickup" /></td>
+                                <td><input type="date" name="pickup" value="{{ $order->pickup }}" /></td>
                             </tr>
                             <tr>
                                 <td>Delivery Date</td>
-                                <td><input type="date" name="delivery" /></td>
+                                <td><input type="date" name="delivery" value="{{ $order->delivery }}" /></td>
                             </tr>
                             <tr>
                                 <td>Notes</td>
-                                <td><textarea name="notes"></textarea></td>
+                                <td><textarea name="notes">{{ $order->notes }}</textarea></td>
                             </tr>
                             <tr>
                                 <td></td>

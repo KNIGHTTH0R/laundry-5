@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\REST;
 
+use App\Http\Controllers\Controller;
 use App\Order;
+
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -15,17 +17,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        return view('order/index', ['orders' => Order::orderBy('id', 'desc')->get()]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('order/create');
+        return Order::all()->toJson();
     }
 
     /**
@@ -40,9 +32,9 @@ class OrderController extends Controller
         $order->price = ($order->laundry + $order->ironing) * 5;
 
         if ($order->save()) {
-            return redirect()->to('order');
+            return $order->toJson();
         } else {
-            return redirect()->to('error');
+            return null;
         }
     }
 
@@ -54,18 +46,7 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        return view('order/show', ['order' => Order::find($id)]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        return view('order/edit', ['order' => Order::find($id)]);
+        return Order::find($id)->toJson();
     }
 
     /**
@@ -82,9 +63,9 @@ class OrderController extends Controller
         $order->price = ($order->laundry + $order->ironing) * 5;
 
         if ($order->update()) {
-            return redirect()->to('order/' . $id);
+            return $order->toJson();
         } else {
-            return redirect()->to('error');
+            return null;
         }
     }
 
@@ -96,11 +77,10 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        if (Order::find($id)->delete()) {
-            return redirect()->to('order');
-        } else {
-            return redirect()->to('error');
-        }
+        $order = Order::findOrFail($id);
+        $order->delete();
+
+        return 204;
     }
 
 }
