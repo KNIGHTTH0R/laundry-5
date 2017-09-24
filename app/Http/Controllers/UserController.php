@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class UserController extends Controller
 {
@@ -66,6 +68,8 @@ class UserController extends Controller
     public function show($id)
     {
         //
+        $user = User::find($id); 
+        return view('user/show', ['user' => $user]);
     }
 
     /**
@@ -77,6 +81,7 @@ class UserController extends Controller
     public function edit($id)
     {
         //
+
     }
 
     /**
@@ -89,6 +94,11 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $user = User::find($id);
+        $user -> email = $request;
+        $user -> save();
+
+        return view('user/show',['user' => $user]);
     }
 
     /**
@@ -100,6 +110,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+        $deleted = DB::delete('delete from users where id = ?', [$id]);
     }
 
 }
