@@ -3,14 +3,16 @@
 use Illuminate\Database\Seeder;
 use App\Order;
 
-class OrderSeeder extends Seeder {
+class OrderSeeder extends Seeder
+{
 
     /**
      * Run the database seeds.
      *
      * @return void
      */
-    public function run() {
+    public function run()
+    {
         DB::table('orders')->delete();
 
         for ($i = 0; $i < 10; $i++) {

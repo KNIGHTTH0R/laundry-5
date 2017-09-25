@@ -13,15 +13,17 @@
                 <div class="panel-body">
                     <table>
                         <tr>
+                            <th>User ID</th>
                             <th>Firstname</th>
                             <th>Lastname</th>
                             <th>Email</th>
                         </tr>
                         <?php foreach ($users as $user) { ?>
                             <tr>
-                                <td><?php echo $user->firstname; ?></td>
-                                <td><?php echo $user->lastname; ?></td>
-                                <td><?php echo $user->email; ?></td>
+                                <td>{{ $user->id }}</td>
+                                <td>{{ $user->firstname }}</td>
+                                <td>{{ $user->lastname }}</td>
+                                <td>{{ $user->email }}</td>
                             </tr>
                         <?php } ?>
                     </table>

@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+Order Details
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row">
@@ -9,8 +13,12 @@
                     Show Order Details
                 </div>
                 <div class="panel-body">
-                    <form action="{{ url('order/'.$order->id.'/edit') }}" method="GET">
+                    <form action="{{ url('orders/'.$order->id.'/edit') }}" method="GET">
                         <table>
+                            <tr>
+                                <td>Order ID</td>
+                                <td>{{ $order->id }}</td>
+                            </tr>
                             <tr>
                                 <td>User ID</td>
                                 <td>{{ $order->user_id }}</td>
@@ -44,7 +52,7 @@
                             </tr>
                         </table>
                     </form>
-                    <form action="{{ url('order/'.$order->id) }}" method="POST">
+                    <form action="{{ url('orders/'.$order->id) }}" method="POST">
                         {{ method_field('DELETE') }}
                         {!! csrf_field() !!}
                         <input type="submit" value="delete" />

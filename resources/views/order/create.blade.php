@@ -9,7 +9,7 @@
                     Create New Order
                 </div>
                 <div class="panel-body">
-                    <form action="{{ url('order') }}" method="POST">
+                    <form action="{{ url('orders') }}" method="POST">
                         {!! csrf_field() !!}
                         <table>
                             <tr>
