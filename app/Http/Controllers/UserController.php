@@ -80,8 +80,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
-
+        return view('user/edit', ['user' => User::find($id)]);
     }
 
     /**
@@ -98,7 +97,7 @@ class UserController extends Controller
         $user -> email = $request;
         $user -> save();
 
-        return view('user/show',['user' => $user]);
+        return view('user/show',['user' => $user::find($id)]);
     }
 
     /**
