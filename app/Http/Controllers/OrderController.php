@@ -40,7 +40,7 @@ class OrderController extends Controller
         $order->price = ($order->laundry + $order->ironing) * 5;
 
         if ($order->save()) {
-            return redirect()->to('order');
+            return redirect()->to('orders');
         } else {
             return redirect()->to('error');
         }
@@ -82,7 +82,7 @@ class OrderController extends Controller
         $order->price = ($order->laundry + $order->ironing) * 5;
 
         if ($order->update()) {
-            return redirect()->to('order/' . $id);
+            return redirect()->to('orders/' . $id);
         } else {
             return redirect()->to('error');
         }
@@ -97,7 +97,7 @@ class OrderController extends Controller
     public function destroy($id)
     {
         if (Order::find($id)->delete()) {
-            return redirect()->to('order');
+            return redirect()->to('orders');
         } else {
             return redirect()->to('error');
         }

@@ -22,14 +22,14 @@
                         </tr>
                         <?php foreach ($orders as $order) { ?>
                             <tr>
-                                <td><?php echo $order->id; ?></td>
-                                <td><?php echo $order->user_id; ?></td>
-                                <td><?php echo $order->laundry; ?>kg</td>
-                                <td><?php echo $order->ironing; ?>kg</td>
-                                <td><?php echo $order->price; ?>$</td>
-                                <td><?php echo $order->pickup; ?></td>
-                                <td><?php echo $order->delivery; ?></td>
-                                <td><?php echo $order->notes; ?></td>
+                                <td>{{ $order->id }}</td>
+                                <td>{{ $order->user_id }}</td>
+                                <td>{{ $order->laundry }}kg</td>
+                                <td>{{ $order->ironing }}kg</td>
+                                <td>{{ $order->price }}$</td>
+                                <td>{{ $order->pickup }}</td>
+                                <td>{{ $order->delivery }}</td>
+                                <td>{{ $order->notes }}</td>
                             </tr>
                         <?php } ?>
                     </table>

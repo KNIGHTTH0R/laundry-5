@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-
 
 class UserController extends Controller
 {
@@ -17,8 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return view('user/index', ['users' => $users]);
+        return view('user/index', ['users' => User::all()]);
     }
 
     /**
@@ -39,23 +36,13 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $user = new User;
-        $user->firstname = $request->firstname;
-        $user->lastname = $request->lastname;
-        $user->email = $request->email;
-        $user->password = $request->password;
-        $user->phone = $request->phone;
-        $user->addressline1 = $request->addressline1;
-        $user->addressline2 = $request->addressline2;
-        $user->suburb = $request->suburb;
-        $user->state = $request->state;
-        $user->postcode = $request->postcode;
-        $user->country = $request->country;
+        $user = new User($request->all());
+        $user->password = bcrypt($request->password);
 
         if ($user->save()) {
-            return $this->index();
+            return redirect()->to('users');
         } else {
-            return view('error');
+            return redirect()->to('error');
         }
     }
 
@@ -67,9 +54,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
-        $user = User::find($id); 
-        return view('user/show', ['user' => $user]);
+        return view('user/show', ['user' => User::find($id)]);
     }
 
     /**
@@ -80,8 +65,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
-
+        return view('user/edit',['user' => User::find($id)]);
     }
 
     /**
@@ -98,7 +82,7 @@ class UserController extends Controller
         $user -> email = $request;
         $user -> save();
 
-        return view('user/show',['user' => $user]);
+        
     }
 
     /**

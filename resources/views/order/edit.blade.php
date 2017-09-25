@@ -9,10 +9,14 @@
                     Edit Order
                 </div>
                 <div class="panel-body">
-                    <form action="{{ url('order/'.$order->id) }}" method="POST">
+                    <form action="{{ url('orders/'.$order->id) }}" method="POST">
                         {{ method_field('PUT') }}
                         {!! csrf_field() !!}
                         <table>
+                            <tr>
+                                <td>Order ID</td>
+                                <td>{{ $order->id }}</td>
+                            </tr>
                             <tr>
                                 <td>User ID</td>
                                 <td><input type="number" name="user_id" value="{{ $order->user_id }}" /></td>
