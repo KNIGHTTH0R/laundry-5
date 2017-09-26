@@ -10,10 +10,10 @@ Register
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Create New User
+                    Show Users Details
                 </div>
                 <div class="panel-body">
-                    <form action="{{ url('users') }}" method="GET">
+                    <form action="{{ url('users/'.$user->id.'/edit') }}" method="GET">
                         <table>
                             <tr>
                                 <td>First name</td>
@@ -56,9 +56,14 @@ Register
                                 <td><input type="text" name="country" value="{{ $user->country }}"></td>
                             </tr>
                             <tr>
-                                <td><input type="submit" name="submit" value="Submit"></td>
+                                <td><input type="submit" name="submit" value="Edit"></td>
                             </tr>
                         </table>
+                    </form>
+                    <form action="{{ url('users/'.$user->id) }}" method="POST">
+                        {{ method_field('DELETE') }}
+                        {!! csrf_field() !!}
+                        <input type="submit" value="delete" />
                     </form>
                 </div>
             </div>

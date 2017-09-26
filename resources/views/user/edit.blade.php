@@ -6,10 +6,10 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Edit Order
+                    Edit User
                 </div>
                 <div class="panel-body">
-                    <form action="{{ url('user/'.$user->id) }}" method="POST">
+                    <form action="{{ url('users/'.$user->id) }}" method="POST">
                         {{ method_field('PUT') }}
                         {!! csrf_field() !!}
                         <table>
