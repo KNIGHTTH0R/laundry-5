@@ -6,11 +6,10 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Edit User
+                    Reset Password                  
                 </div>
                 <div class="panel-body">
-                    <form action="{{ url('users/'.$user->id) }}" method="POST">
-                        {{ method_field('PUT') }}
+                    <form action="reset" method="POST">
                         {!! csrf_field() !!}
                         <table>
                             <tr>

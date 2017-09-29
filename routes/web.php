@@ -26,3 +26,5 @@ Route::group(['middleware' => 'auth'], function() {
 Route::any('error', function() {
     return view('error');
 });
+
+Route::get('resetpassword', 'ResetPasswordController@index');
