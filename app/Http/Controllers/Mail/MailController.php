@@ -15,7 +15,7 @@ class MailController extends Controller
         Mail::send(['text'=>'mail/mail'], $data, function($message)
         {
             $message->to('edyang91@hotmail.com','Zihang Yang')->subject('Send mail from laravel with Laundry');
-            $message->from('735859878@qq.com','Laundry');
+            $message->from('aip_laundry@163.com','Laundry');
         });
         echo "Basics Email was sent!";
     }
