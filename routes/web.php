@@ -27,4 +27,6 @@ Route::any('error', function() {
     return view('error');
 });
 
-Route::get('resetpassword', 'ResetPasswordController@index');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
