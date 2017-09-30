@@ -8,7 +8,10 @@ use Mail;
 
 class MailController extends Controller
 {
-    // create basic email function 
+    /*
+    * create basic email function 
+    * @return email/email view
+    */ 
     public function basic_email()
     {
         $data=['name'=>'Laundry'];
