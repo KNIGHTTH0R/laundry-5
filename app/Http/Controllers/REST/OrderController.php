@@ -4,7 +4,6 @@ namespace App\Http\Controllers\REST;
 
 use App\Http\Controllers\Controller;
 use App\Order;
-
 use Illuminate\Http\Request;
 
 class OrderController extends Controller

@@ -22,4 +22,23 @@ class MailController extends Controller
         });
         echo "Basics Email was sent!";
     }
+
+    /*
+    * create attachement email function 
+    * add attachements on view 
+    * return a view 
+    */
+    public function attachment_email()
+    {
+        $data=['name'=>'Ed Yang'];
+        Mail::send(['text'=>'mail/mail'], $data, function($message)
+        {
+            $message->to('edyang91@hotmail.com', 'Zihang Yang')->subject('Send Mail from lavavel with Basics Email');
+            $message->attach('/Users/YZH/Downloads/apple.png');
+            $message->from('aip_laundry@163.com','Laundry');
+        });
+        echo "Attachment Email was sent";
+
+    }
+
 }

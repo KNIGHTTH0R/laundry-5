@@ -33,3 +33,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('basicmail','Mail\MailController@basic_email');
 
+Route::get('attachemail','Mail\MailController@attachment_email');
+
