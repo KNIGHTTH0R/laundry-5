@@ -68,8 +68,18 @@
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
+                        <a href="">WHY JUNSTAR</a>
+                        <a href="">SERVICE</a>
+                        <a href="">PRICING</a>
+                        <a href="">CONTACT</a>
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a href="{{ url('/myprofile') }}">MY PROFILE</a>
+                        <a href="{{ url('/book') }}">BOOK ORDER</a>
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">Logout</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
                     @else
                         <a href="{{ route('login') }}">Login</a>
                         <a href="{{ route('register') }}">Register</a>
@@ -79,15 +89,35 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Cost Calculator 
                 </div>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                <div>
+                    <form action="{{ url('user/orders') }}" method="POST">
+                        {!! csrf_field() !!}
+                        <table>
+                            <tr>
+                                <td>Laundry (kg)</td>
+                                <td><input type="number" name="laundry" /></td>
+                            </tr>
+                            <tr>
+                                <td>Ironing (kg)</td>
+                                <td><input type="number" name="ironing" /></td>
+                            </tr>
+                            <tr>
+                                <td>Price</td>
+                                <td>(Laundry + Ironing) * 5$/kg // Use AJAX later</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><input type="submit" value="Calculate" /></td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+
+                <div>
+                    
                 </div>
             </div>
         </div>

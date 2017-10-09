@@ -9,12 +9,10 @@
                     Edit User
                 </div>
                 <div class="panel-body">
-                    <form action="{{ url('users/'.$user->id) }}" method="POST">
+                    <form action="{{ url('customer/'.$user->id) }}" method="POST">
                         {{ method_field('PUT') }}
                         {!! csrf_field() !!}
                         <table>
-                            <tr>
-                            </tr>
                             <tr>
                                 <td>Firstname</td>
                                 <td><input type="text" name="firstname" value="{{ $user->firstname}}"></td>
@@ -57,7 +55,7 @@
                             </tr>
                             <tr>
                                 <td></td>
-                                <td><input type="submit" value="Submit" /></td>
+                                <td><input type="submit" value="Save Edited" /></td>
                             </tr>
                         </table>
                     </form>                    
