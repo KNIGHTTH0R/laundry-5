@@ -1,61 +1,50 @@
 @extends('layouts.app')
 
-@section('title')
-Order Details
-@endsection
-
 @section('content')
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Show Order Details
+                    Create New Order
                 </div>
                 <div class="panel-body">
-                    <form action="{{ url('orders/'.$order->id.'/edit') }}" method="GET">
+                    <form action="{{ url('admin/orders') }}" method="POST">
+                        {!! csrf_field() !!}
                         <table>
                             <tr>
-                                <td>Order ID</td>
-                                <td>{{ $order->id }}</td>
-                            </tr>
-                            <tr>
                                 <td>User ID</td>
-                                <td>{{ $order->user_id }}</td>
+                                <td><input type="number" name="user_id" /></td>
                             </tr>
                             <tr>
                                 <td>Laundry (kg)</td>
-                                <td>{{ $order->laundry }}</td>
+                                <td><input type="number" name="laundry" /></td>
                             </tr>
                             <tr>
                                 <td>Ironing (kg)</td>
-                                <td>{{ $order->ironing }}</td>
+                                <td><input type="number" name="ironing" /></td>
                             </tr>
                             <tr>
                                 <td>Price</td>
-                                <td>{{ $order->price }}</td>
+                                <td>(Laundry + Ironing) * 5$/kg // Use AJAX later</td>
                             </tr>
                             <tr>
                                 <td>Pickup Date</td>
-                                <td>{{ $order->pickup }}</td>
+                                <td><input type="date" name="pickup" /></td>
                             </tr>
                             <tr>
                                 <td>Delivery Date</td>
-                                <td>{{ $order->delivery }}</td>
+                                <td><input type="date" name="delivery" /></td>
                             </tr>
                             <tr>
                                 <td>Notes</td>
-                                <td>{{ $order->notes }}</td>
+                                <td><textarea name="notes"></textarea></td>
                             </tr>
                             <tr>
-                                <td><input type="submit" value="Edit" /></td>
+                                <td></td>
+                                <td><input type="submit" value="Submit" /></td>
                             </tr>
                         </table>
-                    </form>
-                    <form action="{{ url('orders/'.$order->id) }}" method="POST">
-                        {{ method_field('DELETE') }}
-                        {!! csrf_field() !!}
-                        <input type="submit" value="delete" />
                     </form>
                 </div>
             </div>

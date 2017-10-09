@@ -9,7 +9,7 @@
                     Edit Order
                 </div>
                 <div class="panel-body">
-                    <form action="{{ url('orders/'.$order->id) }}" method="POST">
+                    <form action="{{ url('admin/orders/'.$order->id) }}" method="POST">
                         {{ method_field('PUT') }}
                         {!! csrf_field() !!}
                         <table>

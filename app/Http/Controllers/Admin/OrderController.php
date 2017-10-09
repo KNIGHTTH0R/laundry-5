@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Order;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -16,7 +17,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        return view('order/index', ['orders' => Order::orderBy('id', 'desc')->get()]);
+        return view('admin/order/index', ['orders' => Order::orderBy('id', 'desc')->get()]);
     }
 
     /**
@@ -26,7 +27,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        return view('order/create');
+        return view('admin/order/create');
     }
 
     /**
@@ -41,7 +42,7 @@ class OrderController extends Controller
         $order->price = ($order->laundry + $order->ironing) * 5;
 
         if ($order->save()) {
-            return redirect()->to('orders');
+            return redirect()->to('admin/orders');
         } else {
             return redirect()->to('error');
         }
@@ -55,7 +56,7 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        return view('order/show', ['order' => Order::find($id)]);
+        return view('admin/order/show', ['order' => Order::find($id)]);
     }
 
     /**
@@ -66,7 +67,7 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        return view('order/edit', ['order' => Order::find($id)]);
+        return view('admin/order/edit', ['order' => Order::find($id)]);
     }
 
     /**
@@ -102,7 +103,7 @@ class OrderController extends Controller
 ////            throw $e;
 //        }
 
-        return redirect()->to('orders/' . $id);
+        return redirect()->to('admin/orders/' . $id);
     }
 
     /**
