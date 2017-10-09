@@ -9,7 +9,7 @@
                     All Orders
                 </div>
                 <div class="panel-body">
-                    <table border="1px">
+                    <table class="table1">
                         <tr>
                             <th>Order ID</th>
                             <th>User ID</th>
@@ -21,6 +21,7 @@
                             <th>Laundry Status</th>
                             <th>Payment Status</th>
                             <th>Notes</th>
+                            <th></th>
                         </tr>
                         <?php foreach ($orders as $order) { ?>
                             <tr>

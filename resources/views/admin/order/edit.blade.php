@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -13,7 +12,7 @@
                     <form action="{{ url('admin/orders/'.$order->id) }}" method="POST">
                         {{ method_field('PUT') }}
                         {!! csrf_field() !!}
-                        <table>
+                        <table class="table1">
                             <tr>
                                 <td>Order ID</td>
                                 <td>{{ $order->id }}</td>
@@ -28,7 +27,7 @@
                             </tr>
                             <tr>
                                 <td>Ironing (kg)</td>
-                                <td><input type="number" name="ironing" value="{{ $order->ironing }}" onchange="changeTotal(laundry,ironing)" /></td>
+                                <td><input type="number" name="ironing" value="{{ $order->ironing }}" onchange="changeTotal(laundry, ironing)" /></td>
                             </tr>
                             <tr>
                                 <td>Total Amount</td>
@@ -46,11 +45,8 @@
                                 <td>Notes</td>
                                 <td><textarea name="notes">{{ $order->notes }}</textarea></td>
                             </tr>
-                            <tr>
-                                <td></td>
-                                <td><input type="submit" value="Submit" /></td>
-                            </tr>
                         </table>
+                        <input type="submit" value="Submit" />
                     </form>
                 </div>
             </div>

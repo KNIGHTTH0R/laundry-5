@@ -1,27 +1,39 @@
 @extends('layouts.app')
 
 @section('content-heading')
-Order
+    Order
 @endsection
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+    <div class="container">
 
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+        <div class="main" >
+            <div class="top" >
+                Laundry Admin
+            </div>
 
-                    You are logged in!!
-                </div>
+            <div class="top2">
+                <ul>
+                    <li><a href="../home">Back</a></li>
+                </ul>
+            </div>
+
+            <div class="left">
+                <a href="orders"><input type="button" title="check orders" class="mybutton1"></a>
+            </div>
+
+            <div class="center1">
+                <a href="orders/create"><input type="button" title="create orders" class="mybutton2"></a>
+            </div>
+            <div class="center2">
+                <a href="users"><input type="button" title="check users" class="mybutton3"></a>
+            </div>
+            <div class="right">
+                <a href="users/create"><input type="button" title="create users" class="mybutton4"></a>
             </div>
         </div>
+
+
     </div>
-</div>
+
 @endsection

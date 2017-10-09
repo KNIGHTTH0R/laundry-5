@@ -11,18 +11,18 @@
                 <div class="panel-body">
                     <form action="{{ url('admin/orders') }}" method="POST">
                         {!! csrf_field() !!}
-                        <table>
+                        <table class="table1">
                             <tr>
                                 <td>User ID</td>
-                                <td><input type="number" name="user_id" /></td>
+                                <td><input type="number" name="user_id" class="textbox1"/></td>
                             </tr>
                             <tr>
                                 <td>Laundry (kg)</td>
-                                <td><input type="number" name="laundry" /></td>
+                                <td><input type="number" name="laundry" class="textbox1" /></td>
                             </tr>
                             <tr>
                                 <td>Ironing (kg)</td>
-                                <td><input type="number" name="ironing" /></td>
+                                <td><input type="number" name="ironing" class="textbox1" /></td>
                             </tr>
                             <tr>
                                 <td>Price</td>
@@ -30,15 +30,15 @@
                             </tr>
                             <tr>
                                 <td>Pickup Date</td>
-                                <td><input type="date" name="pickup" /></td>
+                                <td><input type="date" name="pickup" class="textbox1" /></td>
                             </tr>
                             <tr>
                                 <td>Delivery Date</td>
-                                <td><input type="date" name="delivery" /></td>
+                                <td><input type="date" name="delivery" class="textbox1" /></td>
                             </tr>
                             <tr>
                                 <td>Notes</td>
-                                <td><textarea name="notes"></textarea></td>
+                                <td><textarea name="notes" class="textbox1"></textarea></td>
                             </tr>
                             <tr>
                                 <td></td>

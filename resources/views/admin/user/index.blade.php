@@ -11,12 +11,13 @@
                     All Users
                 </div>
                 <div class="panel-body">
-                    <table>
+                    <table class="table1">
                         <tr>
                             <th>User ID</th>
                             <th>Firstname</th>
                             <th>Lastname</th>
                             <th>Email</th>
+                            <th></th>
                         </tr>
                         <?php foreach ($users as $user) { ?>
                             <tr>

@@ -13,8 +13,7 @@ Order Details
                     Show Order Details
                 </div>
                 <div class="panel-body">
-
-                    <table border="1px">
+                    <table class="table1">
                         <tr>
                             <td>Order ID</td>
                             <td>{{ $order->id }}</td>
