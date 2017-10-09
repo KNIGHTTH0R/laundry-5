@@ -9,7 +9,7 @@
                     Edit User
                 </div>
                 <div class="panel-body">
-                    <form action="{{ url('users/'.$user->id) }}" method="POST">
+                    <form action="{{ url('admin/users/'.$user->id) }}" method="POST">
                         {{ method_field('PUT') }}
                         {!! csrf_field() !!}
                         <table>

@@ -16,7 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('user/index', ['users' => User::all()]);
+        return view('admin/user/index', ['users' => User::all()]);
     }
 
     /**
@@ -26,7 +26,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('user/create');
+        return view('admin/user/create');
     }
 
     /**
@@ -41,7 +41,7 @@ class UserController extends Controller
         $user->password = bcrypt($request->password);
 
         if ($user->save()) {
-            return redirect()->to('users');
+            return redirect()->to('admin/users');
         } else {
             return redirect()->to('error');
         }
@@ -55,7 +55,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        return view('user/show', ['user' => User::find($id)]);
+        return view('admin/user/show', ['user' => User::find($id)]);
     }
 
     /**
@@ -66,7 +66,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        return view('user/edit', ['user' => User::find($id)]);
+        return view('admin/user/edit', ['user' => User::find($id)]);
     }
 
     /**
@@ -82,7 +82,7 @@ class UserController extends Controller
         $user->fill($request->all());
 
         if ($user->update()) {
-            return redirect()->to('users/' . $id);
+            return redirect()->to('admin/users/' . $id);
         } else {
             return redirect()->to('error');
         }
@@ -97,7 +97,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         if (User::find($id)->delete()) {
-            return redirect()->to('users');
+            return redirect()->to('admin/users');
         } else {
             return redirect()->to('error');
         }    

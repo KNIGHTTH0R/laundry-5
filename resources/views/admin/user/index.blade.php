@@ -24,6 +24,7 @@
                                 <td>{{ $user->firstname }}</td>
                                 <td>{{ $user->lastname }}</td>
                                 <td>{{ $user->email }}</td>
+                                <td><a href="{{ url('admin/users/'.$user->id) }}"><input type="button" value="Edit"></a></td>
                             </tr>
                         <?php } ?>
                     </table>

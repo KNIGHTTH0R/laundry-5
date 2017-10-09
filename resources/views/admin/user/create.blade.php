@@ -13,7 +13,7 @@ Register
                     Create New User
                 </div>
                 <div class="panel-body">
-                    <form action="{{ url('users') }}" method="POST">
+                    <form action="{{ url('admin/users') }}" method="POST">
                         {!! csrf_field() !!}
                         <table>
                             <tr>

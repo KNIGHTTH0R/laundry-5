@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -23,15 +24,15 @@
                             </tr>
                             <tr>
                                 <td>Laundry (kg)</td>
-                                <td><input type="number" name="laundry" value="{{ $order->laundry }}" /></td>
+                                <td><input type="number" name="laundry" value="{{ $order->laundry }}" onchange="changeTotal(laundry, ironing)" /></td>
                             </tr>
                             <tr>
                                 <td>Ironing (kg)</td>
-                                <td><input type="number" name="ironing" value="{{ $order->ironing }}" /></td>
+                                <td><input type="number" name="ironing" value="{{ $order->ironing }}" onchange="changeTotal(laundry,ironing)" /></td>
                             </tr>
                             <tr>
-                                <td>Price</td>
-                                <td>Calculate using AJAX later</td>
+                                <td>Total Amount</td>
+                                <td id="total">{{ ($order->laundry + $order->ironing)*5 }}$</td>
                             </tr>
                             <tr>
                                 <td>Pickup Date</td>

@@ -6,6 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateOrderTable extends Migration
 {
+
     /**
      * Run the migrations.
      *
@@ -18,7 +19,9 @@ class CreateOrderTable extends Migration
             $table->integer('user_id');
             $table->decimal('laundry', 8, 2);
             $table->decimal('ironing', 8, 2);
-            $table->decimal('price', 8, 2);
+            $table->decimal('total', 8, 2);
+            $table->string('laundry_status', 10);
+            $table->string('payment_status', 10);
             $table->date('pickup');
             $table->date('delivery');
             $table->text('notes')->nullable();
@@ -35,4 +38,5 @@ class CreateOrderTable extends Migration
     {
         Schema::dropIfExists('orders');
     }
+
 }
