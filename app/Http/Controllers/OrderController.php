@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -77,15 +78,31 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $order = Order::find($id);
-        $order->fill($request->all());
-        $order->price = ($order->laundry + $order->ironing) * 5;
+//        DB::transaction(function() use ($request, $id) {
+//            $order = Order::find($id);
+//            $order->fill($request->all());
+//            $order->price = ($order->laundry + $order->ironing) * 5;
+//            $order->update();
+//        });
 
-        if ($order->update()) {
-            return redirect()->to('orders/' . $id);
-        } else {
-            return redirect()->to('error');
-        }
+        DB::beginTransaction();
+        try {
+            $order = Order::find($id);
+            $order->fill($request->all());
+            $order->price = ($order->laundry + $order->ironing) * 5;
+            $order->update();
+                    DB::commit();
+
+        } catch (Exception $e) {
+            DB::rollBack();
+//            throw $e;
+        } 
+//        catch (Throwable $e) {
+//            DB::rollBack();
+////            throw $e;
+//        }
+
+        return redirect()->to('orders/' . $id);
     }
 
     /**
