@@ -90,14 +90,13 @@ class OrderController extends Controller
         try {
             $order = Order::find($id);
             $order->fill($request->all());
-            $order->price = ($order->laundry + $order->ironing) * 5;
+            $order->total = ($order->laundry + $order->ironing) * 5;
             $order->update();
-                    DB::commit();
-
+            DB::commit();
         } catch (Exception $e) {
             DB::rollBack();
 //            throw $e;
-        } 
+        }
 //        catch (Throwable $e) {
 //            DB::rollBack();
 ////            throw $e;
@@ -115,7 +114,7 @@ class OrderController extends Controller
     public function destroy($id)
     {
         if (Order::find($id)->delete()) {
-            return redirect()->to('orders');
+            return redirect()->to('admin/orders');
         } else {
             return redirect()->to('error');
         }

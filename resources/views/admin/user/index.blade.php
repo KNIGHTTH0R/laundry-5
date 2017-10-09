@@ -11,12 +11,13 @@
                     All Users
                 </div>
                 <div class="panel-body">
-                    <table>
+                    <table class="table1">
                         <tr>
                             <th>User ID</th>
                             <th>Firstname</th>
                             <th>Lastname</th>
                             <th>Email</th>
+                            <th></th>
                         </tr>
                         <?php foreach ($users as $user) { ?>
                             <tr>
@@ -24,6 +25,7 @@
                                 <td>{{ $user->firstname }}</td>
                                 <td>{{ $user->lastname }}</td>
                                 <td>{{ $user->email }}</td>
+                                <td><a href="{{ url('admin/users/'.$user->id) }}"><input type="button" value="Edit"></a></td>
                             </tr>
                         <?php } ?>
                     </table>

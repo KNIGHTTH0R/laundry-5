@@ -65,6 +65,15 @@
         </style>
     </head>
     <body>
+        <script type="text/javascript">
+            new Vue({
+                el: '.title',
+                data: {
+                    message: 'Hello Laravel!'
+                }
+            })
+        </script>
+
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
@@ -91,7 +100,6 @@
                 <div class="title m-b-md">
                     Cost Calculator 
                 </div>
-
                 <div>
                     <form action="{{ url('user/orders') }}" method="POST">
                         {!! csrf_field() !!}
@@ -114,10 +122,6 @@
                             </tr>
                         </table>
                     </form>
-                </div>
-
-                <div>
-                    
                 </div>
             </div>
         </div>

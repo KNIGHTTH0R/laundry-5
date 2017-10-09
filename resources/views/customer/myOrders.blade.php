@@ -5,7 +5,9 @@
 </head>
 <body>
 <h1>My Orders</h1>
-<form>
+<form action="{{ url('customer/'.$user->id) }}" method="POST">
+                        {{ method_field('PUT') }}
+                        {!! csrf_field() !!}
     <table>
         <tr>
             <td>Order Id</td>
