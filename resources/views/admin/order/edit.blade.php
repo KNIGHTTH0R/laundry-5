@@ -12,42 +12,42 @@
                     <form action="{{ url('admin/orders/'.$order->id) }}" method="POST">
                         {{ method_field('PUT') }}
                         {!! csrf_field() !!}
-                        <table>
-                            <tr>
-                                <td>Order ID</td>
-                                <td>{{ $order->id }}</td>
+                        <table class="table1">
+                            <tr class="tr1">
+                                <td class="td1">Order ID</td>
+                                <td class="td1">{{ $order->id }}</td>
                             </tr>
-                            <tr>
-                                <td>User ID</td>
-                                <td><input type="number" name="user_id" value="{{ $order->user_id }}" /></td>
+                            <tr class="tr1">
+                                <td class="td1">User ID</td>
+                                <td class="td1"><input type="number" name="user_id" value="{{ $order->user_id }}" class="textbox1"/></td>
                             </tr>
-                            <tr>
-                                <td>Laundry (kg)</td>
-                                <td><input type="number" name="laundry" value="{{ $order->laundry }}" /></td>
+                            <tr class="tr1">
+                                <td class="td1">Laundry (kg)</td>
+                                <td class="td1"><input type="number" name="laundry" value="{{ $order->laundry }}" class="textbox1" /></td>
                             </tr>
-                            <tr>
-                                <td>Ironing (kg)</td>
-                                <td><input type="number" name="ironing" value="{{ $order->ironing }}" /></td>
+                            <tr class="tr1">
+                                <td class="td1">Ironing (kg)</td>
+                                <td class="td1"><input type="number" name="ironing" value="{{ $order->ironing }}" class="textbox1"/></td>
                             </tr>
-                            <tr>
-                                <td>Price</td>
-                                <td>Calculate using AJAX later</td>
+                            <tr class="tr1">
+                                <td class="td1">Price</td>
+                                <td class="td1">Calculate using AJAX later</td>
                             </tr>
-                            <tr>
-                                <td>Pickup Date</td>
-                                <td><input type="date" name="pickup" value="{{ $order->pickup }}" /></td>
+                            <tr class="tr1">
+                                <td class="td1">Pickup Date</td>
+                                <td class="td1"><input type="date" name="pickup" value="{{ $order->pickup }}" class="textbox1"/></td>
                             </tr>
-                            <tr>
-                                <td>Delivery Date</td>
-                                <td><input type="date" name="delivery" value="{{ $order->delivery }}" /></td>
+                            <tr class="tr1">
+                                <td class="td1">Delivery Date</td>
+                                <td class="td1"><input type="date" name="delivery" value="{{ $order->delivery }}" class="textbox1"/></td>
                             </tr>
-                            <tr>
-                                <td>Notes</td>
-                                <td><textarea name="notes">{{ $order->notes }}</textarea></td>
+                            <tr class="tr1">
+                                <td class="td1">Notes</td>
+                                <td class="td1"><textarea name="notes" class="textbox1">{{ $order->notes }}</textarea></td>
                             </tr>
-                            <tr>
+                            <tr class="tr1">
                                 <td></td>
-                                <td><input type="submit" value="Submit" /></td>
+                                <td class="td1"><input type="submit" value="Submit" /></td>
                             </tr>
                         </table>
                     </form>

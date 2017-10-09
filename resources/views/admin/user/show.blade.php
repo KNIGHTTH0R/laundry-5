@@ -14,51 +14,51 @@ Register
                 </div>
                 <div class="panel-body">
                     <form action="{{ url('users/'.$user->id.'/edit') }}" method="GET">
-                        <table>
-                            <tr>
-                                <td>First name</td>
-                                <td><input type="text" name="firstname" value="{{ $user->firstname }}"></td>
+                        <table class="table1">
+                            <tr class="tr1">
+                                <td class="td1">First name</td>
+                                <td class="td1"><input type="text" name="firstname"  value="{{ $user->firstname }}" class="textbox1"></td>
                             </tr>
-                            <tr>
-                                <td>Last name</td
-                                ><td><input type="text" name="lastname" value="{{ $user->lastname }}"></td>
+                            <tr class="tr1">
+                                <td class="td1">Last name</td>
+                                <td class="td1"><input type="text" name="lastname" value="{{ $user->lastname }}" class="textbox1"></td>
                             </tr>
-                            <tr>
-                                <td>Email</td>
-                                <td><input type="text" name="email" value="{{ $user->email }}"></td>
+                            <tr class="tr1">
+                                <td class="td1">Email</td>
+                                <td class="td1"><input type="text" name="email" value="{{ $user->email }}" class="textbox1"></td>
                             </tr>
-                            <tr>
-                                <td>Phone</td>
-                                <td><input type="text" name="phone" value="{{ $user->phone }}"></td>
+                            <tr class="tr1">
+                                <td class="td1">Phone</td>
+                                <td class="td1"><input type="text" name="phone" value="{{ $user->phone }}" class="textbox1"></td>
                             </tr>
-                            <tr>
-                                <td>Addressline 1</td>
-                                <td><input type="text" name="addressline1" value="{{ $user->addressline1 }}"></td>
+                            <tr class="tr1">
+                                <td class="td1">Addressline 1</td>
+                                <td class="td1"><input type="text" name="addressline1" value="{{ $user->addressline1 }}" class="textbox1"></td>
                             </tr>
-                            <tr>
-                                <td>Addressline 2</td>
-                                <td><input type="text" name="addressline2" value="{{ $user->addressline2 }}"></td>
+                            <tr class="tr1">
+                                <td class="td1">Addressline 2</td>
+                                <td class="td1"><input type="text" name="addressline2" value="{{ $user->addressline2 }}" class="textbox1"></td>
                             </tr>
-                            <tr>
-                                <td>Suburb</td>
-                                <td><input type="type" name="suburb" value="{{ $user->suburb }}"></td>
+                            <tr class="tr1">
+                                <td class="td1">Suburb</td>
+                                <td class="td1"><input type="type" name="suburb" value="{{ $user->suburb }}" class="textbox1"></td>
                             </tr>
-                            <tr>
-                                <td>State</td>
-                                <td><input type="text" name="state" value="{{ $user->state }}"></td>
+                            <tr class="tr1">
+                                <td class="td1">State</td>
+                                <td class="td1"><input type="text" name="state" value="{{ $user->state }}" class="textbox1"></td>
                             </tr>
-                            <tr>
-                                <td>Postcode</td>
-                                <td><input type="text" name="postcode" value="{{ $user->postcode }}"></td>
+                            <tr class="tr1">
+                                <td class="td1">Postcode</td>
+                                <td class="td1"><input type="text" name="postcode" value="{{ $user->postcode }}" class="textbox1"></td>
                             </tr>
-                            <tr>
-                                <td>Country</td>
-                                <td><input type="text" name="country" value="{{ $user->country }}"></td>
-                            </tr>
-                            <tr>
-                                <td><input type="submit" name="submit" value="Edit"></td>
+                            <tr class="tr1">
+                                <td class="td1">Country</td>
+                                <td class="td1"><input type="text" name="country" value="{{ $user->country }}" class="textbox1"></td>
                             </tr>
                         </table>
+
+                            <input type="submit" name="submit" value="Edit">
+
                     </form>
                     <form action="{{ url('users/'.$user->id) }}" method="POST">
                         {{ method_field('DELETE') }}

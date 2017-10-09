@@ -15,55 +15,55 @@ Register
                 <div class="panel-body">
                     <form action="{{ url('users') }}" method="POST">
                         {!! csrf_field() !!}
-                        <table>
-                            <tr>
-                                <td>First name</td>
-                                <td><input type="text" name="firstname"></td>
+                        <table class="table1">
+                            <tr class="tr1">
+                                <td  class="td1">First name</td>
+                                <td  class="td1"><input type="text" name="firstname" class="textbox1"></td>
                             </tr>
-                            <tr>
-                                <td>Last name</td
-                                ><td><input type="text" name="lastname"></td>
+                            <tr class="tr1">
+                                <td  class="td1">Last name</td>
+                                <td  class="td1"><input type="text" name="lastname" class="textbox1"></td>
                             </tr>
-                            <tr>
-                                <td>Email</td>
-                                <td><input type="text" name="email"></td>
+                            <tr class="tr1">
+                                <td  class="td1">Email</td>
+                                <td  class="td1"><input type="text" name="email" class="textbox1"></td>
                             </tr>
-                            <tr>
-                                <td>Password</td>
-                                <td><input type="password" name="password"></td>
+                            <tr class="tr1">
+                                <td  class="td1">Password</td>
+                                <td  class="td1"><input type="password" name="password" class="textbox1"></td>
                             </tr>
-                            <tr>
-                                <td>Phone</td>
-                                <td><input type="text" name="phone"></td>
+                            <tr class="tr1">
+                                <td  class="td1">Phone</td>
+                                <td  class="td1"><input type="text" name="phone" class="textbox1"></td>
                             </tr>
-                            <tr>
-                                <td>Addressline 1</td>
-                                <td><input type="text" name="addressline1"></td>
+                            <tr class="tr1">
+                                <td  class="td1">Addressline 1</td>
+                                <td  class="td1"><input type="text" name="addressline1" class="textbox1"></td>
                             </tr>
-                            <tr>
-                                <td>Addressline 2</td>
-                                <td><input type="text" name="addressline2"></td>
+                            <tr class="tr1">
+                                <td  class="td1">Addressline 2</td>
+                                <td  class="td1"><input type="text" name="addressline2" class="textbox1"></td>
                             </tr>
-                            <tr>
-                                <td>Suburb</td>
-                                <td><input type="type" name="suburb"></td>
+                            <tr class="tr1">
+                                <td  class="td1">Suburb</td>
+                                <td  class="td1"><input type="type" name="suburb" class="textbox1"></td>
                             </tr>
-                            <tr>
-                                <td>State</td>
-                                <td><input type="text" name="state"></td>
+                            <tr class="tr1">
+                                <td  class="td1">State</td>
+                                <td  class="td1"><input type="text" name="state" class="textbox1"></td>
                             </tr>
-                            <tr>
-                                <td>Postcode</td>
-                                <td><input type="text" name="postcode"></td>
+                            <tr class="tr1">
+                                <td  class="td1">Postcode</td>
+                                <td  class="td1"><input type="text" name="postcode" class="textbox1"></td>
                             </tr>
-                            <tr>
-                                <td>Country</td>
-                                <td><input type="text" name="country"></td>
-                            </tr>
-                            <tr>
-                                <td><input type="submit" name="submit" value="Submit"></td>
+                            <tr class="tr1">
+                                <td  class="td1">Country</td>
+                                <td  class="td1"><input type="text" name="country" class="textbox1"></td>
                             </tr>
                         </table>
+
+                        <input type="submit" name="submit" value="Submit">
+
                     </form>
                 </div>
             </div>

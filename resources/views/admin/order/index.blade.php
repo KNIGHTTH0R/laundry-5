@@ -9,27 +9,27 @@
                     All Orders
                 </div>
                 <div class="panel-body">
-                    <table>
-                        <tr>
-                            <th>Order ID</th>
-                            <th>User ID</th>
-                            <th>Laundry</th>
-                            <th>Ironing</th>
-                            <th>Price</th>
-                            <th>Dickup</th>
-                            <th>Delivery</th>
-                            <th>Notes</th>
+                    <table class="table1">
+                        <tr class="tr1">
+                            <th class="td1">Order ID</th>
+                            <th class="td1">User ID</th>
+                            <th class="td1">Laundry</th>
+                            <th class="td1">Ironing</th>
+                            <th class="td1">Price</th>
+                            <th class="td1">Dickup</th>
+                            <th class="td1">Delivery</th>
+                            <th class="td1">Notes</th>
                         </tr>
                         <?php foreach ($orders as $order) { ?>
-                            <tr>
-                                <td>{{ $order->id }}</td>
-                                <td>{{ $order->user_id }}</td>
-                                <td>{{ $order->laundry }}kg</td>
-                                <td>{{ $order->ironing }}kg</td>
-                                <td>{{ $order->price }}$</td>
-                                <td>{{ $order->pickup }}</td>
-                                <td>{{ $order->delivery }}</td>
-                                <td>{{ $order->notes }}</td>
+                            <tr class="tr1">
+                                <td class="td1">{{ $order->id }}</td>
+                                <td class="td1">{{ $order->user_id }}</td>
+                                <td class="td1">{{ $order->laundry }}kg</td>
+                                <td class="td1">{{ $order->ironing }}kg</td>
+                                <td class="td1">{{ $order->price }}$</td>
+                                <td class="td1">{{ $order->pickup }}</td>
+                                <td class="td1">{{ $order->delivery }}</td>
+                                <td class="td1">{{ $order->notes }}</td>
                             </tr>
                         <?php } ?>
                     </table>

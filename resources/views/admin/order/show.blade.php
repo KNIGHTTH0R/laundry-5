@@ -14,43 +14,43 @@ Order Details
                 </div>
                 <div class="panel-body">
                     <form action="{{ url('admin/orders/'.$order->id.'/edit') }}" method="GET">
-                        <table>
-                            <tr>
-                                <td>Order ID</td>
-                                <td>{{ $order->id }}</td>
+                        <table class="table1">
+                            <tr class="tr1">
+                                <td class="td1">Order ID</td>
+                                <td class="td1">{{ $order->id }}</td>
                             </tr>
-                            <tr>
-                                <td>User ID</td>
-                                <td>{{ $order->user_id }}</td>
+                            <tr class="tr1">
+                                <td class="td1">User ID</td>
+                                <td class="td1">{{ $order->user_id }}</td>
                             </tr>
-                            <tr>
-                                <td>Laundry (kg)</td>
-                                <td>{{ $order->laundry }}</td>
+                            <tr class="tr1">
+                                <td class="td1">Laundry (kg)</td>
+                                <td class="td1">{{ $order->laundry }}</td>
                             </tr>
-                            <tr>
-                                <td>Ironing (kg)</td>
-                                <td>{{ $order->ironing }}</td>
+                            <tr class="tr1">
+                                <td class="td1">Ironing (kg)</td>
+                                <td class="td1">{{ $order->ironing }}</td>
                             </tr>
-                            <tr>
-                                <td>Price</td>
-                                <td>{{ $order->price }}</td>
+                            <tr class="tr1">
+                                <td class="td1">Price</td>
+                                <td class="td1">{{ $order->price }}</td>
                             </tr>
-                            <tr>
-                                <td>Pickup Date</td>
-                                <td>{{ $order->pickup }}</td>
+                            <tr class="tr1">
+                                <td class="td1">Pickup Date</td>
+                                <td class="td1">{{ $order->pickup }}</td>
                             </tr>
-                            <tr>
-                                <td>Delivery Date</td>
-                                <td>{{ $order->delivery }}</td>
+                            <tr class="tr1">
+                                <td class="td1">Delivery Date</td>
+                                <td class="td1">{{ $order->delivery }}</td>
                             </tr>
-                            <tr>
-                                <td>Notes</td>
-                                <td>{{ $order->notes }}</td>
-                            </tr>
-                            <tr>
-                                <td><input type="submit" value="Edit" /></td>
+                            <tr class="tr1">
+                                <td class="td1">Notes</td>
+                                <td class="td1">{{ $order->notes }}</td>
                             </tr>
                         </table>
+
+                        <input type="submit" value="Edit" />
+
                     </form>
                     <form action="{{ url('admin/orders/'.$order->id) }}" method="POST">
                         {{ method_field('DELETE') }}

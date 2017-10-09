@@ -16,7 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('user/index', ['users' => User::all()]);
+        return view('admin/user/index', ['users' => User::all()]);
     }
 
     /**
@@ -26,7 +26,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('user/create');
+        return view('admin/user/create');
     }
 
     /**
@@ -55,7 +55,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        return view('user/show', ['user' => User::find($id)]);
+        return view('admin/user/show', ['user' => User::find($id)]);
     }
 
     /**
@@ -66,7 +66,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        return view('user/edit', ['user' => User::find($id)]);
+        return view('admin/user/edit', ['user' => User::find($id)]);
     }
 
     /**
