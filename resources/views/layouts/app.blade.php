@@ -8,7 +8,7 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Online Laundry Booking') }}</title>
+        <title>@yield('title')</title>
 
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -28,10 +28,17 @@
                             <span class="icon-bar"></span>
                         </button>
 
+                        @if (Auth::user() && Auth::user()->role == 'staff')
+                        <!-- Branding Image -->
+                        <a class="navbar-brand" href="{{ url('/admin') }}">
+                            Admin Console
+                        </a>
+                        @else
                         <!-- Branding Image -->
                         <a class="navbar-brand" href="{{ url('/') }}">
                             {{ config('app.name', 'Online Laundry Booking') }}
                         </a>
+                        @endif
                     </div>
 
                     <div class="collapse navbar-collapse" id="app-navbar-collapse">
