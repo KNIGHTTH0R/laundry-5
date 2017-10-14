@@ -12,25 +12,28 @@ Route::group(['middleware' => 'admin', 'namespace' => 'Admin', 'prefix' => 'admi
     Route::resource('users', 'UserController');
 });
 
-Route::get('myprofile', 'CustomerController@show')->middleware('customer');
+Route::middleware(['customer'])->group(function()
+{
+    Route::get('myprofile', 'CustomerController@show');
 
-Route::put('customer/{id}', 'CustomerController@update')->middleware('customer');
+    Route::put('customer/{id}', 'CustomerController@update');
 
-Route::get('book', 'BookingController@index')->middleware('customer');
+    Route::get('book', 'BookingController@index');
 
-Route::post('creatBooking', 'BookingController@store')->middleware('customer');
+    Route::post('creatBooking', 'BookingController@store');
 
-Route::put('book/{id}', 'BookingController@update')->middleware('customer');
+    Route::put('book/{id}', 'BookingController@update');
 
-Route::get('orders', 'BookingController@show');
+    Route::get('orders', 'BookingController@show');
+
+    Route::get('pay/{id}', 'PaymentController@pay');
+
+    Route::get('overview', 'PaymentController@overview');
+});
 
 Route::any('error', function() {
     return view('error');
 });
-
-Route::get('pay/{id}', 'PaymentController@pay')->middleware('customer');
-
-Route::get('overview', 'PaymentController@overview')->middleware('customer');
 
 Auth::routes();
 
