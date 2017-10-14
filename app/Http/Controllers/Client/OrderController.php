@@ -2,45 +2,84 @@
 
 namespace App\Http\Controllers\Client;
 
-use App\Http\Controllers\Controller;
 use App\Order;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
-
-    //
+    /**
+     * Display all orders of current user
+     * 
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        return view('customer/book');
+        $user_id = Auth::id();
+        $orders = DB::select('select * from orders where user_id = ?', [$user_id]);
+
+        
+        return view('client/orders', ['orders' => $orders]);
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('client/book');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
         $order = new Order($request->all());
-        $order->price = ($order->laundry + $order->ironing) * 5;
+
+        $order->user_id = Auth::id();
+
+        $order->laundry_status = "initial";
+
+        $order->payment_status = "unpaid";
+
+        $order->total = ($order->laundry + $order->ironing) * 5;
 
         if ($order->save()) {
-            return redirect()->to('orders');
+            return redirect()->to('user_orders');
         } else {
             return redirect()->to('error');
         }
     }
 
     /**
-     * Display all orders of the user
-     * 
-     * @param int $id
+     * Display the specified resource.
+     *
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
-        $user_id = Auth::id();
-        $orders = DB::select('select * from orders where user_id = ?', [$user_id]);
+        return view('client/book', ['order' => Order::find($id)]);
+    }
 
-        return view('customer/orders', ['orders' => $orders]);
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        return view('client/edit', ['order' => Order::find($id)]);
     }
 
     /**
@@ -56,10 +95,23 @@ class OrderController extends Controller
         $order->fill($request->all());
 
         if ($order->update()) {
-            return redirect()->to('orders');
+            return redirect()->to('user_orders');
         } else {
             return redirect()->to('error');
         }
     }
-
+    
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        DB::transaction(function() use ($id) {
+            Order::find($id)->delete();
+        });
+        return redirect('user_orders');
+    }    
 }

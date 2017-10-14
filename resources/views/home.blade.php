@@ -79,15 +79,12 @@
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
             <div class="top-right links">
-                <a href="">Why JUNSTAR</a>
-                <a href="">Pricing</a>
-                <a href="">Contact</a>
                 @auth
                 @if (Auth::user()->role == 'staff')
                 <a href="{{ url('admin') }}">Admin Console</a>
                 @else
-                <a href="{{ url('book') }}">Book Order</a>
-                <a href="{{ url('orders')}}">My Orders</a>
+                <a href="{{ url('user_orders/show') }}">Book Order</a>
+                <a href="{{ url('user_orders')}}">My Orders</a>
                 <a href="{{ url('profile') }}">My Profile</a>
                 @endif
                 <a href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -119,10 +116,6 @@
                             <tr>
                                 <td>Price</td>
                                 <td id="total">0$</td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td><input type="submit" value="Calculate" /></td>
                             </tr>
                         </table>
                     </form>
