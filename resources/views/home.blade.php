@@ -106,15 +106,15 @@
                         <table>
                             <tr>
                                 <td>Laundry (kg)</td>
-                                <td><input type="number" name="laundry" /></td>
+                                <td><input type="number" name="laundry" onchange="changeTotal(laundry, ironing)" /></td>
                             </tr>
                             <tr>
                                 <td>Ironing (kg)</td>
-                                <td><input type="number" name="ironing" /></td>
+                                <td><input type="number" name="ironing" onchange="changeTotal(laundry, ironing)" /></td>
                             </tr>
                             <tr>
                                 <td>Price</td>
-                                <td>(Laundry + Ironing) * 5$/kg // Use AJAX later</td>
+                                <td id="total">0$</td>
                             </tr>
                             <tr>
                                 <td></td>
