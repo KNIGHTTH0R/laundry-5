@@ -22,7 +22,7 @@ class OrderSeeder extends Seeder
                 'ironing' => $i,
                 'total' => $i * 10,
                 'laundry_status' => 'completed',
-                'payment_status' => 'completed',
+                'payment_status' => 'paid',
                 'pickup' => '2017-01-01',
                 'delivery' => '2017-01-05',
                 'notes' => 'notes' . $i,

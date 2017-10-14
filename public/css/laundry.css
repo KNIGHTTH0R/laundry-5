@@ -16,7 +16,7 @@
 }
 @-ms-keyframes animate-cloud {
     from {
-        background-position: 600px 100%;
+        background-position: 600px 50%;
     }
     to {
         background-position: 0 100%;
@@ -24,17 +24,18 @@
 }
 @-o-keyframes animate-cloud {
     from {
-        background-position: 600px 100%;
+        background-position: 600px 50%;
     }
     to {
-        background-position: 0 100%;
+        background-position: 0 50%;
     }
 }
 html{
-    height: 100%;
+    min-height: 100%;
 }
 body{
-    background:url(../images/cloud.png) 0 bottom repeat-x  #049ec4;
+    background:url(../images/cloud.png) 0 bottom repeat-x #049ec4;
+    background-size: cover;
     -webkit-animation: animate-cloud 20s linear infinite;
     -moz-animation: animate-cloud 20s linear infinite;
     -ms-animation: animate-cloud 20s linear infinite;
@@ -81,26 +82,21 @@ li a {
 li a:hover {
     background-color: #111;
 }
-.mybutton1{
+.button-order{
     width: 100%;
     height: 100%;
     background-image: url("../images/order.PNG");
+    background-position: center;
 }
-.mybutton2{
-    width: 100%;
-    height:100%;
-    background-image: url("../images/makeorder.PNG");
-}
-.mybutton3{
+
+.button-user{
     width: 100%;
     height:100%;
     background-image: url("../images/user.PNG");
+    background-size: cover;
+    background-position: center;
 }
-.mybutton4 {
-    width: 100%;
-    height: 100%;
-    background-image: url("../images/createuser.PNG");
-}
+
 .top {
     width: 100%;
     height: 20%;
@@ -113,57 +109,23 @@ li a:hover {
     float:left;
     background-color: white;
 }
-.left{
-    width: 50%;
-    height: 330px;
-    text-align: center;
-    float:left;
-}
-.center1{
-    width: 50%;
-    height: 330px;
-    text-align: center;
-    float:left;
-}
-.center2{
-    width: 50%;
-    height: 330px;
-    float:left;
-}
-.right{
-    width:50%;
-    height: 330px;
-    text-align: center;
-    float:left;
-}
-/*.left_btm{
-    width: 25%;
-    height: 300px;
-    float:left;
-    background-color: blue;
-}
-.center1_btm{
-    width: 25%;
-    height: 300px;
-    background-color: grey;
-    float:left;
-}
-.center2_btm{
-    width: 25%;
-    height: 300px;
-    background-color: whitesmoke;
-    float:left;
-}
-.right_btm{
-    width:25%;
-    height: 300px;
-    background-color: yellow;
-    float:left;
-}*/
 
+.left-img{
+    width: 50%;
+    height: 330px;
+    text-align: center;
+    float:left;
+}
+.right-img{
+    width: 50%;
+    height: 330px;
+    text-align: center;
+    float:left;
+}
 
 .table1{
-    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
     height: 100%;
     text-align: center;
     border-collapse:collapse;
@@ -172,21 +134,21 @@ li a:hover {
 
 .table1 tr, .table1 tr td, .table1 tr th{
     border: 1px solid #e3e3e3;
-    text-align: center;
+    text-align: left;
 }
 
-.table1 tr td textarea, .table1 tr td input{
-    width: 100%;
+.table1 tr td textarea, .table1 tr td .input-field {
+    width: 80%;
+    height: 100%;
+    border: 1px solid #e3e3e3;
+}
+
+.input-radio {
     height: 100%;
     text-align: center;
     border: 1px solid #e3e3e3;
 }
 
 .table2{
-    margin: auto;
-    height: 100%;
-    text-align: center;
-    border-collapse:collapse;
-    border: 1px solid #e3e3e3;
+    width: 100%;
 }
-

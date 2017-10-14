@@ -1,8 +1,7 @@
 <?php
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
@@ -12,31 +11,18 @@ Route::group(['middleware' => 'admin', 'namespace' => 'Admin', 'prefix' => 'admi
     Route::resource('users', 'UserController');
 });
 
-Route::get('myprofile', 'CustomerController@show')->middleware('customer');
+Route::group(['middleware' => 'client', 'namespace' => 'Client'], function() {
+    Route::get('profile', 'UserController@show');
+    Route::put('profile/update', 'UserController@update');
 
-Route::put('customer/{id}', 'CustomerController@update')->middleware('customer');
-
-Route::get('book', 'BookingController@index')->middleware('customer');
-
-Route::post('creatBooking', 'BookingController@store')->middleware('customer');
-
-Route::put('book/{id}', 'BookingController@update')->middleware('customer');
-
-Route::get('orders', 'BookingController@show');
-
-Route::any('error', function() {
-    return view('error');
+    Route::get('book', 'BookingController@index');
+    Route::get('orders', 'BookingController@show');
+    Route::post('creatBooking', 'BookingController@store');
+    Route::put('book/{id}', 'BookingController@update');
+    
+    Route::get('pay/{id}', 'PaymentController@pay');
+    Route::get('overview', 'PaymentController@overview');
 });
 
-Route::get('pay/{id}', 'PaymentController@pay')->middleware('customer');
-
-Route::get('overview', 'PaymentController@overview')->middleware('customer');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('basicmail','Mail\MailController@basic_email');
-
-Route::get('attachemail','Mail\MailController@attachment_email');
-
+Route::get('basicmail', 'Mail\MailController@basic_email');
+Route::get('attachemail', 'Mail\MailController@attachment_email');

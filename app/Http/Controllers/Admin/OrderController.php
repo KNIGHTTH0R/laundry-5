@@ -39,12 +39,12 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $order = new Order($request->all());
-        $order->price = ($order->laundry + $order->ironing) * 5;
+        $order->total = ($order->laundry + $order->ironing) * 5;
 
         if ($order->save()) {
-            return redirect()->to('admin/orders');
+            return redirect('admin/orders');
         } else {
-            return redirect()->to('error');
+            return redirect('error');
         }
     }
 
@@ -79,30 +79,14 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-//        DB::transaction(function() use ($request, $id) {
-//            $order = Order::find($id);
-//            $order->fill($request->all());
-//            $order->price = ($order->laundry + $order->ironing) * 5;
-//            $order->update();
-//        });
-
-        DB::beginTransaction();
-        try {
+        DB::transaction(function() use ($request, $id) {
             $order = Order::find($id);
             $order->fill($request->all());
             $order->total = ($order->laundry + $order->ironing) * 5;
             $order->update();
-            DB::commit();
-        } catch (Exception $e) {
-            DB::rollBack();
-//            throw $e;
-        }
-//        catch (Throwable $e) {
-//            DB::rollBack();
-////            throw $e;
-//        }
+        });
 
-        return redirect()->to('admin/orders/' . $id);
+        return redirect('admin/orders/' . $id);
     }
 
     /**
@@ -113,11 +97,10 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        if (Order::find($id)->delete()) {
-            return redirect()->to('admin/orders');
-        } else {
-            return redirect()->to('error');
-        }
+        DB::transaction(function() use ($id) {
+            Order::find($id)->delete();
+        });
+        return redirect('admin/orders');
     }
 
 }

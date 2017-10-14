@@ -49,11 +49,23 @@
 
                         <!-- Right Side Of Navbar -->
                         <ul class="nav navbar-nav navbar-right">
+                            <li><a href="">Why JUNSTAR</a></li>
+                            <li><a href="">Pricing</a></li>
+                            <li><a href="">Contact</a></li>
                             <!-- Authentication Links -->
                             @guest
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
                             @else
+
+                            @if (Auth::user()->role == 'staff')
+                            <li><a href="{{ url('admin') }}">Admin Console</a></li>
+                            @else
+                            <li><a href="{{ url('book') }}">Book Order</a></li>
+                            <li><a href="{{ url('orders')}}">My Orders</a></li>
+                            <li><a href="{{ url('profile') }}">My Profile</a></li>
+                            @endif
+
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -79,7 +91,20 @@
                 </div>
             </nav>
 
-            @yield('content')
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                @yield('title')
+                            </div>
+                            <div class="panel-body">
+                                @yield('content')
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Scripts -->
