@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Order;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class BookingController extends Controller
 {
@@ -18,13 +20,27 @@ class BookingController extends Controller
         $order->price = ($order->laundry + $order->ironing) * 5;
 
         if ($order->save()) {
-            return redirect()->to('myOrders');
+            return redirect()->to('orders');
         } else {
             return redirect()->to('error');
         }
     }
 
-         /**
+    /**
+    * Display all orders of the user
+    * 
+    * @param int $id
+    * @return \Illuminate\Http\Response
+    */
+    public function show(){
+        $user_id = Auth::id();
+        $orders = DB::select('select * from orders where user_id = ?', [$user_id]);
+
+        return view('customer/orders', ['orders' => $orders]);
+
+    }
+
+     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -37,7 +53,7 @@ class BookingController extends Controller
         $order->fill($request->all());
 
         if ($order->update()) {
-            return redirect()->to('myOrders');
+            return redirect()->to('orders');
         } else {
             return redirect()->to('error');
         }
