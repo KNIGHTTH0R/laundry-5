@@ -5,7 +5,7 @@ Book a Order
 @endsection
 
 @section('content')
-<form action="{{ url('creatBooking') }}" method="POST" onsubmit="return false;" >
+<form action="{{ url('creatBooking') }}" method="POST" >
     {!! csrf_field() !!}
     <table class="table1">
         <tr>
