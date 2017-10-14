@@ -52,20 +52,12 @@ User Details
         <td>{{ $user->postcode }}</td>
     </tr>
 </table>
-<table>
-    <tr>
-        <td>
-            <form action="{{ url('admin/users/'.$user->id.'/edit') }}" method="GET">
-                <input type="submit" name="submit" value="Edit" class="btn btn-default" />
-            </form>
-        </td>
-        <td>
-            <form action="{{ url('admin/users/'.$user->id) }}" method="POST">
-                {{ method_field('DELETE') }}
-                {!! csrf_field() !!}
-                <input type="submit" value="Delete" class="btn btn-default" />
-            </form>
-        </td>
-    </tr>
-</table>
+<form class="float-form" action="{{ url('admin/users/'.$user->id.'/edit') }}" method="GET">
+    <input type="submit" name="submit" value="Edit" class="btn btn-default" />
+</form>
+<form action="{{ url('admin/users/'.$user->id) }}" method="POST">
+    {{ method_field('DELETE') }}
+    {!! csrf_field() !!}
+    <input type="submit" value="Delete" class="btn btn-default" />
+</form>
 @endsection

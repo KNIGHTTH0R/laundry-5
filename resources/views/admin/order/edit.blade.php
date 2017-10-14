@@ -16,15 +16,15 @@ Edit Order
         </tr>
         <tr>
             <td>User ID</td>
-            <td><input type="number" name="user_id" value="{{ $order->user_id }}" /></td>
+            <td><input type="number" name="user_id" class="input-field" value="{{ $order->user_id }}" /></td>
         </tr>
         <tr>
             <td>Laundry (kg)</td>
-            <td><input type="number" name="laundry" min="0" value="{{ $order->laundry }}" onchange="changeTotal(laundry, ironing)" /></td>
+            <td><input type="number" name="laundry" class="input-field" min="0" value="{{ $order->laundry }}" onchange="changeTotal(laundry, ironing)" /></td>
         </tr>
         <tr>
             <td>Ironing (kg)</td>
-            <td><input type="number" name="ironing" min="0" value="{{ $order->ironing }}" onchange="changeTotal(laundry, ironing)" /></td>
+            <td><input type="number" name="ironing" class="input-field" min="0" value="{{ $order->ironing }}" onchange="changeTotal(laundry, ironing)" /></td>
         </tr>
         <tr>
             <td>Total Amount</td>
@@ -32,11 +32,11 @@ Edit Order
         </tr>
         <tr>
             <td>Pickup Date</td>
-            <td><input type="date" name="pickup" value="{{ $order->pickup }}" /></td>
+            <td><input type="date" name="pickup" class="input-field" value="{{ $order->pickup }}" /></td>
         </tr>
         <tr>
             <td>Delivery Date</td>
-            <td><input type="date" name="delivery" value="{{ $order->delivery }}" /></td>
+            <td><input type="date" name="delivery" class="input-field" value="{{ $order->delivery }}" /></td>
         </tr>
         <tr>
             <td>Notes</td>
