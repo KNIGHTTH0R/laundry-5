@@ -1,8 +1,7 @@
 <?php
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
@@ -12,34 +11,19 @@ Route::group(['middleware' => 'admin', 'namespace' => 'Admin', 'prefix' => 'admi
     Route::resource('users', 'UserController');
 });
 
-Route::middleware(['customer'])->group(function()
-{
-    Route::get('myprofile', 'CustomerController@show');
-
-    Route::put('customer/{id}', 'CustomerController@update');
+Route::group(['middleware' => 'client', 'namespace' => 'Client'], function() {
+    Route::get('profile', 'UserController@show');
+    Route::put('profile/update', 'UserController@update');
 
     Route::get('book', 'BookingController@index');
-
-    Route::post('creatBooking', 'BookingController@store');
-
-    Route::put('book/{id}', 'BookingController@update');
-
     Route::get('orders', 'BookingController@show');
-
+    Route::post('creatBooking', 'BookingController@store');
+    Route::put('book/{id}', 'BookingController@update');
+    
     Route::get('pay/{id}', 'PaymentController@pay');
-
     Route::get('overview', 'PaymentController@overview');
 });
 
-Route::any('error', function() {
-    return view('error');
-});
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('basicmail','Mail\MailController@basic_email');
-
-Route::get('attachemail','Mail\MailController@attachment_email');
+Route::get('basicmail', 'Mail\MailController@basic_email');
+Route::get('attachemail', 'Mail\MailController@attachment_email');
 

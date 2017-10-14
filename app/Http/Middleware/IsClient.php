@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 class IsClient
 {
+
     /**
      * Handle an incoming request.
      *
@@ -16,10 +17,10 @@ class IsClient
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::user() && Auth::user()->email == "ed@it.com"){
-
-            return $next($request);           
+        if (Auth::user() && Auth::user()->role == 'customer') {
+            return $next($request);
         }
         return redirect('/');
     }
+
 }

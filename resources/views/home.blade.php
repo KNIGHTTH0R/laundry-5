@@ -62,59 +62,63 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            .middle {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .table-font {
+                color: grey;
+                font-size: 20px;
+                font-weight: bold;
+            }
         </style>
     </head>
     <body>
-        <script type="text/javascript">
-            new Vue({
-                el: '.title',
-                data: {
-                    message: 'Hello Laravel!'
-                }
-            })
-        </script>
-
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
-                <div class="top-right links">
-                        <a href="">WHY JUNSTAR</a>
-                        <a href="">PRICING</a>
-                        <a href="">CONTACT</a>
-                    @auth
-                        <a href="{{ url('/book') }}">BOOK ORDER</a>
-                        <a href="{{ url('/orders')}}">My Orders</a>
-                        <a href="{{ url('/myprofile') }}">MY PROFILE</a>
-                        <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();">Logout</a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            {{ csrf_field() }}
-                        </form>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
+            <div class="top-right links">
+                <a href="">Why JUNSTAR</a>
+                <a href="">Pricing</a>
+                <a href="">Contact</a>
+                @auth
+                @if (Auth::user()->role == 'staff')
+                <a href="{{ url('admin') }}">Admin Console</a>
+                @else
+                <a href="{{ url('book') }}">Book Order</a>
+                <a href="{{ url('orders')}}">My Orders</a>
+                <a href="{{ url('profile') }}">My Profile</a>
+                @endif
+                <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">Logout</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                </form>
+                @else
+                <a href="{{ route('login') }}">Login</a>
+                <a href="{{ route('register') }}">Register</a>
+                @endauth
+            </div>
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
-                    Cost Calculator 
-                </div>
+                <div class="title">COST ESTIMATION</div>
                 <div>
-                    <form action="{{ url('user/orders') }}" method="POST">
+                    <form action="{{ url('user/orders') }}" method="POST" >
                         {!! csrf_field() !!}
-                        <table>
+                        <table class="middle table-font">
                             <tr>
                                 <td>Laundry (kg)</td>
-                                <td><input type="number" name="laundry" /></td>
+                                <td><input type="number" name="laundry" min="0" onchange="changeTotal(laundry, ironing)" /></td>
                             </tr>
                             <tr>
                                 <td>Ironing (kg)</td>
-                                <td><input type="number" name="ironing" /></td>
+                                <td><input type="number" name="ironing" min="0" onchange="changeTotal(laundry, ironing)" /></td>
                             </tr>
                             <tr>
                                 <td>Price</td>
-                                <td>(Laundry + Ironing) * 5$/kg // Use AJAX later</td>
+                                <td id="total">0$</td>
                             </tr>
                             <tr>
                                 <td></td>
@@ -125,5 +129,9 @@
                 </div>
             </div>
         </div>
+        <!-- Scripts -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="{{ asset('js/app.js') }}"></script>
+        <script src="{{ asset('js/ajax.js') }}"></script>
     </body>
 </html>

@@ -27,8 +27,7 @@ class UserSeeder extends Seeder
                 'addressline2' => 'addressline2_' . $i,
                 'suburb' => 'Sydney',
                 'state' => 'NSW',
-                'postcode' => '2000',
-                'country' => 'Australia',
+                'postcode' => '2000'
             ]);
         }
 
@@ -43,8 +42,7 @@ class UserSeeder extends Seeder
         'addressline2' => 'addressline2_' . $i,
         'suburb' => 'Sydney',
         'state' => 'NSW',
-        'postcode' => '2000',
-        'country' => 'Australia',
+        'postcode' => '2000'
         ]);
         
         User::create([
@@ -58,8 +56,7 @@ class UserSeeder extends Seeder
         'addressline2' => 'addressline2_' . $i,
         'suburb' => 'Sydney',
         'state' => 'NSW',
-        'postcode' => '2000',
-        'country' => 'Australia',
+        'postcode' => '2000'
         ]);
     }
 }

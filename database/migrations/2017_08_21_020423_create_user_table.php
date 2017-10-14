@@ -28,7 +28,6 @@ class CreateUserTable extends Migration
             $table->string('suburb', 30)->nullable();
             $table->string('state', 30)->nullable();
             $table->string('postcode', 20)->nullable();
-            $table->string('country', 30)->nullable();
             $table->timestamps();
         });
     }
