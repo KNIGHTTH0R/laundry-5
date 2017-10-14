@@ -5,7 +5,8 @@
 </head>
 <body>
 <h1>My Orders</h1>
-<form action="{{ url('customer/'.$user->id) }}" method="POST">
+@foreach($orders as $order)
+<form action="{{ url('book/'.$order->id) }}" method="POST">
                         {{ method_field('PUT') }}
                         {!! csrf_field() !!}
     <table>
@@ -35,13 +36,14 @@
         </tr>
         <tr>
             <td>Notes</td>
-            <td><input type="text" name="notes" value="{{$order->notes}"></td>
+            <td><input type="text" name="notes" value="{{$order->notes}}"></td>
         </tr>
         <tr>
-            <td></td>
-            <td><input type="submit" name="Save Edited"></td>
+            <td><input type="submit" name="edit" value="Edit"></td>
+            <td><button type=button onclick="window.open('{{url('pay/'.$order->id)}}')">Book</button></td>
         </tr>
     </table>
 </form>
+@endforeach
 </body>
 </html>

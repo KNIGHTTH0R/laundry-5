@@ -78,12 +78,12 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                         <a href="">WHY JUNSTAR</a>
-                        <a href="">SERVICE</a>
                         <a href="">PRICING</a>
                         <a href="">CONTACT</a>
                     @auth
-                        <a href="{{ url('/myprofile') }}">MY PROFILE</a>
                         <a href="{{ url('/book') }}">BOOK ORDER</a>
+                        <a href="{{ url('/orders')}}">My Orders</a>
+                        <a href="{{ url('/myprofile') }}">MY PROFILE</a>
                         <a href="{{ route('logout') }}" onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">Logout</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
