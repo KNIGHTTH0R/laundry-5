@@ -28,13 +28,9 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $order = new Order($request->all());
-        $order->price = ($order->laundry + $order->ironing) * 5;
-
-        if ($order->save()) {
-            return $order->toJson();
-        } else {
-            return null;
-        }
+        $order->total = ($order->laundry + $order->ironing) * 5;
+        $order->save();
+        return response($order->toJson(), 201);
     }
 
     /**
@@ -59,13 +55,10 @@ class OrderController extends Controller
     {
         $order = Order::find($id);
         $order->fill($request->all());
-        $order->price = ($order->laundry + $order->ironing) * 5;
+        $order->total = ($order->laundry + $order->ironing) * 5;
 
-        if ($order->update()) {
-            return $order->toJson();
-        } else {
-            return null;
-        }
+        $order->update();
+            return response($order->toJson(), 200);
     }
 
     /**
@@ -76,10 +69,8 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        $order = Order::findOrFail($id);
-        $order->delete();
-
-        return 204;
+        Order::findOrFail($id)->delete();
+        return response('deleted', 204);
     }
 
 }

@@ -48,20 +48,14 @@ Order Details
         <td>{{ $order->notes }}</td>
     </tr>
 </table>
-<table>
-    <tr>
-        <td>
-            <form action="{{ url('admin/orders/'.$order->id.'/edit') }}" method="GET">
-                <input type="submit" value="Edit" class="btn btn-default" />
-            </form>
-        </td>
-        <td>
-            <form action="{{ url('admin/orders/'.$order->id) }}" method="POST">
-                {{ method_field('DELETE') }}
-                {!! csrf_field() !!}
-                <input type="submit" value="delete" class="btn btn-default" />
-            </form>
-        </td>
-    </tr>
-</table>
+
+<form class="float-form" action="{{ url('admin/orders/'.$order->id.'/edit') }}" method="GET">
+    <input type="submit" value="Edit" class="btn btn-default" />
+</form>
+
+<form action="{{ url('admin/orders/'.$order->id) }}" method="POST">
+    {{ method_field('DELETE') }}
+    {!! csrf_field() !!}
+    <input type="submit" value="delete" class="btn btn-default" />
+</form>
 @endsection

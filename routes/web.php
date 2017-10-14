@@ -23,4 +23,3 @@ Route::group(['middleware' => 'client', 'namespace' => 'Client'], function() {
 
 Route::get('basicmail', 'Mail\MailController@basic_email');
 Route::get('attachemail', 'Mail\MailController@attachment_email');
-
