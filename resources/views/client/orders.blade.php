@@ -1,49 +1,73 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>My orders</title>
-    </head>
-    <body>
-        <h1>My Orders</h1>
-        @foreach($orders as $order)
-        <form action="{{ url('book/'.$order->id) }}" method="POST">
-            {{ method_field('PUT') }}
-            {!! csrf_field() !!}
-            <table>
-                <tr>
-                    <td>Order Id</td>
-                    <td><input type="number" name="id" value="{{$order->id}}"></td>
-                </tr>
-                <tr>
-                    <td>Laundry</td>
-                    <td><input type="text" name="laundry" value="{{$order->laundry}}"></td>
-                </tr>
-                <tr>
-                    <td>Ironing</td>
-                    <td><input type="text" name="ironing" value="{{$order->ironing}}"></td>
-                </tr>
-                <tr>
-                    <td>Price</td>
-                    <td>Show price later</td>
-                </tr>
-                <tr>
-                    <td>Pick Up</td>
-                    <td><input type="date" name="pickup" value="{{$order->pickup}}"></td>
-                </tr>
-                <tr>
-                    <td>Delivery</td>
-                    <td><input type="date" name="delivery" value="{{$order->delivery}}"></td>
-                </tr>
-                <tr>
-                    <td>Notes</td>
-                    <td><input type="text" name="notes" value="{{$order->notes}}"></td>
-                </tr>
-                <tr>
-                    <td><input type="submit" name="edit" value="Edit"></td>
-                    <td><button type=button onclick="window.open('{{url('pay/'.$order->id)}}')">Book</button></td>
-                </tr>
-            </table>
-        </form>
-        @endforeach
-    </body>
-</html>
+@extends('layouts.app')
+
+@section('title')
+Order Details
+@endsection
+
+@section('content')
+@foreach($orders as $order)
+<table class="table1">
+    <tr>
+        <td>Order ID</td>
+        <td>{{ $order->id }}</td>
+    </tr>
+    <tr>
+        <td>User ID</td>
+        <td>{{ $order->user_id }}</td>
+    </tr>
+    <tr>
+        <td>Laundry Weight</td>
+        <td>{{ $order->laundry }}kg</td>
+    </tr>
+    <tr>
+        <td>Ironing Weight</td>
+        <td>{{ $order->ironing }}kg</td>
+    </tr>
+    <tr>
+        <td>Total Amount</td>
+        <td>{{ $order->total }}$</td>
+    </tr>
+    <tr>
+        <td>Pickup Date</td>
+        <td>{{ $order->pickup }}</td>
+    </tr>
+    <tr>
+        <td>Delivery Date</td>
+        <td>{{ $order->delivery }}</td>
+    </tr>
+    <tr>
+        <td>Laundry Status</td>
+        <td>{{ $order->laundry_status }}</td>
+    </tr>
+    <tr>
+        <td>Payment Status</td>
+        <td>{{ $order->payment_status }}</td>
+    </tr>
+    <tr>
+        <td>Notes</td>
+        <td>{{ $order->notes }}</td>
+    </tr>
+</table>
+<table>
+    <tr>
+        <td>
+            <form action="{{ url('user_orders/'.$order->id.'/edit') }}" method="GET">
+                <input type="submit" value="Edit" class="btn btn-default" />
+            </form>
+        </td>
+        <td>
+            <form action="{{ url('user_orders/'.$order->id) }}" method="POST">
+                {{ method_field('DELETE') }}
+                {!! csrf_field() !!}
+                <input type="submit" value="Delete" class="btn btn-default" />
+            </form>
+        </td>
+        <td>
+            <form action="{{ url('pay/'.$order->user_id) }}" method="GET">
+                <input type="submit" value="Book" class="btn btn-default" />
+            </form>
+        </td>
+    </tr>
+</table>
+@endforeach
+@endsection        

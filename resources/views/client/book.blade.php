@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('title')
-Book a Order
+Book an Order
 @endsection
 
 @section('content')
-<form action="{{ url('creatBooking') }}" method="POST" >
+<form action="{{ url('user_orders') }}" method="POST">
     {!! csrf_field() !!}
     <table class="table1">
         <tr>

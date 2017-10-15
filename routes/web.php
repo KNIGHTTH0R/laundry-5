@@ -15,10 +15,7 @@ Route::group(['middleware' => 'client', 'namespace' => 'Client'], function() {
     Route::get('profile', 'UserController@show');
     Route::put('profile/update', 'UserController@update');
 
-    Route::get('book', 'BookingController@index');
-    Route::get('orders', 'BookingController@show');
-    Route::post('creatBooking', 'BookingController@store');
-    Route::put('book/{id}', 'BookingController@update');
+    Route::resource('user_orders','OrderController');
     
     Route::get('pay/{id}', 'PaymentController@pay');
     Route::get('overview', 'PaymentController@overview');
