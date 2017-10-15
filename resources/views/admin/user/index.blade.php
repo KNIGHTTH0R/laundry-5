@@ -12,7 +12,7 @@ User
 <input type="text" name="email" id="email" />
 <input type="button" value="search" class="btn btn-default" onclick="searchUsers()" />
 <div id="search-results">
-    <table class="table1 table2">
+    <table class="table1 full-width">
         <tr>
             <th>User ID</th>
             <th>Firstname</th>

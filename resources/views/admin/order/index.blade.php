@@ -12,7 +12,7 @@ All Orders
 <input type="text" name="user_id" id="user_id" />
 <input type="button" value="search" class="btn btn-default" onclick="searchOrders()" />
 <div id="search-results">
-    <table class="table1 table2">
+    <table class="table1 full-width">
         <tr>
             <th>Order ID</th>
             <th>User ID</th>

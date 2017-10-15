@@ -20,7 +20,6 @@ class OrderController extends Controller
     {
         $user_id = Auth::id();
         $orders = DB::select('select * from orders where user_id = ?', [$user_id]);
-
         
         return view('client/orders', ['orders' => $orders]);
     }

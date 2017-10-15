@@ -63,7 +63,6 @@ a:hover {color:white;}
 a:active {color:white;}
 a.leftmargin {margin-left: 10cm}
 
-
 ul {
     list-style-type: none;
     margin: 0;
@@ -102,19 +101,6 @@ li a:hover {
     background-position: center;
 }
 
-.top {
-    width: 100%;
-    height: 20%;
-    text-align: center;
-    font-size:50px;
-}
-.top2{
-    width:100%;
-    height: 20%;
-    float:left;
-    background-color: white;
-}
-
 .left-img{
     width: 50%;
     height: 330px;
@@ -129,12 +115,15 @@ li a:hover {
 }
 
 .table1{
-    margin-left: auto;
-    margin-right: auto;
     height: 100%;
+    min-width: 50%;
     text-align: center;
     border-collapse:collapse;
     border: 1px solid #e3e3e3;
+}
+
+.full-width {
+    width: 100%;
 }
 
 .table1 tr, .table1 tr td, .table1 tr th{
@@ -143,7 +132,7 @@ li a:hover {
 }
 
 .table1 tr td textarea, .table1 tr td .input-field {
-    width: 80%;
+    width: auto;
     height: 100%;
     border: 1px solid #e3e3e3;
 }
@@ -154,16 +143,6 @@ li a:hover {
     border: 1px solid #e3e3e3;
 }
 
-.table2{
-    width: 100%;
-}
-
-.align-left {
-    text-align: left;
-}
-
-.align-right {
-    margin-right: 0;
-    margin-left: auto;
-    text-align: right;
+.alert {
+    color: red;
 }
