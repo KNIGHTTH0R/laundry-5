@@ -16,17 +16,27 @@ class RESTTest extends TestCase
      */
     public function testRESTAPI()
     {
-        $response = $this->get('api/orders');
+        // Test REST API with authentication to get all orders
+        // Admin user
+        $response = $this->json('GET', 'api/orders', ['email' => 'aaa@aaa.com', 'password' => 'aaaaaa']);
         $response->assertStatus(200);
-        $response = $this->get('api/order');
+        // Normal user
+        $response = $this->json('GET', 'api/orders', ['email' => 'ccc@ccc.com', 'password' => 'cccccc']);
+        $response->assertStatus(403);
+        // Guest
+        $response = $this->json('GET', 'api/order');
         $response->assertStatus(404);
 
-        $response = $this->get('api/orders/1');
+        // Get get specific order
+        $response = $this->json('GET', 'api/orders/1', ['email' => 'aaa@aaa.com', 'password' => 'aaaaaa']);
         $response->assertStatus(200);
-        $response = $this->get('api/orders/0');
-        $response->assertStatus(500);
+        $response = $this->json('GET', 'api/orders/1');
+        $response->assertStatus(404);
 
-        $response = $this->post('api/orders', [
+        // Create a new order
+        $response = $this->json('POST', 'api/orders', [
+            'email' => 'aaa@aaa.com',
+            'password' => 'aaaaaa',
             "user_id" => 0,
             "laundry" => "0.00",
             "ironing" => "0.00",
@@ -37,10 +47,11 @@ class RESTTest extends TestCase
             "notes" => "notes0"
         ]);
         $response->assertStatus(201);
-        $response = $this->post('api/orders');
-        $response->assertStatus(500);
         
+        // Update a order
         $response = $this->put('api/orders/1', [
+            'email' => 'aaa@aaa.com',
+            'password' => 'aaaaaa',
             "user_id" => 0,
             "laundry" => "99.00",
             "ironing" => "99.00",
@@ -51,13 +62,10 @@ class RESTTest extends TestCase
             "notes" => "notes0"
         ]);
         $response->assertStatus(200);
-        $response = $this->put('api/orders/0');
-        $response->assertStatus(500);
         
-        $response = $this->delete('api/orders/5');
+        // Delete a order
+        $response = $this->delete('api/orders/5', ['email' => 'aaa@aaa.com', 'password' => 'aaaaaa']);
         $response->assertStatus(204);
-        $response = $this->delete('api/orders/5');
-        $response->assertStatus(404);
     }
 
 }

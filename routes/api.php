@@ -17,7 +17,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['namespace' => 'REST'], function() {
+Route::group(['middleware' => 'restAuth', 'namespace' => 'REST'], function() {
     Route::get('orders', 'OrderController@index');
     Route::get('orders/{order}', 'OrderController@show');
     Route::post('orders', 'OrderController@store');
