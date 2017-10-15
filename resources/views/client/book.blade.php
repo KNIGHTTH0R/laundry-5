@@ -15,22 +15,15 @@ Book an Order
         </tr>
         <tr>
             <td>Laundry (kg)</td>
-            <td><input type="number" name="laundry" min="0" onchange="changeTotal(laundry, ironing)" />
-            @if ($errors->has('laundry'))
-            <span class="help-block">
-                <strong>{{ $errors->first('laundry') }}</strong>
-            </span>
-            @endif
+            <td>
+                <input type="number" name="laundry" min="0" id="laundry" value="{{ old('laundry') }}" onchange="changeTotal()" />
+                <span class="alert">{{ $errors->first('laundry') }}</span>
             </td>
         </tr>
         <tr>
             <td>Ironing (kg)</td>
-            <td><input type="number" name="ironing" min="0" onchange="changeTotal(laundry, ironing)" />
-            @if ($errors->has('ironing'))
-            <span class="help-block">
-                <strong>{{ $errors->first('ironing') }}</strong>
-            </span>
-            @endif
+            <td><input type="number" name="ironing" min="0" id="ironing" value="{{ old('ironing') }}" onchange="changeTotal()" />
+                <span class="alert">{{ $errors->first('ironing') }}</span>
             </td>
         </tr>
         <tr>
@@ -39,32 +32,23 @@ Book an Order
         </tr>
         <tr>
             <td>Pickup Date</td>
-            <td><input type="date" name="pickup" />
-            @if ($errors->has('pickup'))
-            <span class="help-block">
-                <strong>{{ $errors->first('pickup') }}</strong>
-            </span>
-            @endif
+            <td>
+                <input type="date" name="pickup" value="{{ old('pickup') }}" />
+                <span class="alert">{{ $errors->first('pickup') }}</span>
             </td>
         </tr>
         <tr>
             <td>Delivery Date</td>
-            <td><input type="date" name="delivery" />
-            @if ($errors->has('delivery'))
-            <span class="help-block">
-                <strong>{{ $errors->first('delivery') }}</strong>
-            </span>
-            @endif
-        </td>
+            <td>
+                <input type="date" name="delivery" value="{{ old('delivery') }}" />
+                <span class="alert">{{ $errors->first('delivery') }}</span>
+            </td>
         </tr>
         <tr>
             <td>Notes</td>
-            <td><textarea name="notes"></textarea>
-            @if ($errors->has('notes'))
-            <span class="help-block">
-                <strong>{{ $errors->first('notes') }}</strong>
-            </span>
-            @endif
+            <td>
+                <textarea name="notes">{{ old('notes') }}</textarea>
+                <span class="alert">{{ $errors->first('notes') }}</span>
             </td>
         </tr>
     </table>

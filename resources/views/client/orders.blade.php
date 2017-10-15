@@ -64,7 +64,7 @@ Order Details
         </td>
         <td>
             <form action="{{ url('pay') }}" method="GET">
-                <input type="submit" value="Book" class="btn btn-default" />
+                <input type="submit" value="Checkout" class="btn btn-default" />
             </form>
         </td>
     </tr>

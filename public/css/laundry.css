@@ -34,7 +34,7 @@ html{
     min-height: 100%;
 }
 body{
-    background:url(../images/cloud.png) 0 bottom repeat-x #049ec4;
+    background: url("../images/cloud.png") 0 bottom repeat-x #049ec4;
     background-size: cover;
     -webkit-animation: animate-cloud 20s linear infinite;
     -moz-animation: animate-cloud 20s linear infinite;

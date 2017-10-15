@@ -20,54 +20,45 @@
                 height: 100vh;
                 margin: 0;
             }
-
             .full-height {
                 height: 100vh;
             }
-
             .flex-center {
                 align-items: center;
                 display: flex;
                 justify-content: center;
             }
-
             .position-ref {
                 position: relative;
             }
-
             .top-right {
                 position: absolute;
                 right: 10px;
                 top: 18px;
             }
-
             .content {
                 text-align: center;
             }
-
             .title {
                 font-size: 84px;
+                font-weight: bold;
             }
-
             .links > a {
                 color: #636b6f;
                 padding: 0 25px;
                 font-size: 12px;
-                font-weight: 600;
+                font-weight: bold;
                 letter-spacing: .1rem;
                 text-decoration: none;
                 text-transform: uppercase;
             }
-
             .m-b-md {
                 margin-bottom: 30px;
             }
-
             .middle {
                 margin-left: auto;
                 margin-right: auto;
             }
-
             .table-font {
                 color: grey;
                 font-size: 20px;
@@ -100,18 +91,19 @@
             @endif
 
             <div class="content">
-                <div class="title">COST ESTIMATION</div>
+                <div class="title">Online Laundry Booking</div>
                 <div>
+                    <h2>Estimate your laundry cost.</h2>
                     <form action="{{ url('user/orders') }}" method="POST" >
                         {!! csrf_field() !!}
                         <table class="middle table-font">
                             <tr>
                                 <td>Laundry (kg)</td>
-                                <td><input type="number" name="laundry" min="0" onchange="changeTotal(laundry, ironing)" /></td>
+                                <td><input type="number" name="laundry" min="0" id="laundry" onchange="changeTotal()" /></td>
                             </tr>
                             <tr>
                                 <td>Ironing (kg)</td>
-                                <td><input type="number" name="ironing" min="0" onchange="changeTotal(laundry, ironing)" /></td>
+                                <td><input type="number" name="ironing" min="0" id="ironing" onchange="changeTotal()" /></td>
                             </tr>
                             <tr>
                                 <td>Price</td>
@@ -119,6 +111,19 @@
                             </tr>
                         </table>
                     </form>
+                    <h2>Register to experience the most convenient laundry service. </h2>
+                    <table class="middle table-font">
+                        <tr>
+                            <td><img src="/images/1.png" width="200px" height="200px" /></td>
+                            <td><img src="/images/2.png" width="200px" height="200px" /></td>
+                            <td><img src="/images/3.png" width="200px" height="200px" /></td>
+                        </tr>
+                        <tr>
+                            <td>Quality Guarantee</td>
+                            <td>Expert</td>
+                            <td>Free Delivery</td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>

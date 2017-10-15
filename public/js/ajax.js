@@ -4,13 +4,13 @@ $.ajaxSetup({
   }
 });
 
-function changeTotal(laundry, ironing) {
-    if (!$.isNumeric($(laundry).val()))
-        $(laundry).val(0);
-    if (!$.isNumeric($(ironing).val()))
-        $(ironing).val(0);
-    var laundryWeight = parseFloat($(laundry).val());
-    var ironingWeight = parseFloat($(ironing).val());
+function changeTotal() {
+    if (!$.isNumeric($("#laundry").val()))
+        $("#laundry").val(0);
+    if (!$.isNumeric($("#ironing").val()))
+        $("#ironing").val(0);
+    var laundryWeight = parseFloat($("#laundry").val());
+    var ironingWeight = parseFloat($("#ironing").val());
     var total = (laundryWeight + ironingWeight) * 5;
     $("#total").text(total + "$");
 }
