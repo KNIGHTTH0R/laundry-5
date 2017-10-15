@@ -7,6 +7,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Validate;
 
 class UserController extends Controller
 {
@@ -29,6 +30,21 @@ class UserController extends Controller
      */
     public function update(Request $request)
     {
+        $this->validate($request,[
+            'firstname' => 'required|alpha|max:255',
+            'lastname' => 'required|alpha|max:255',
+            'email' => 'required|max:255|email',
+            'phone' => 'required|size:10|integer',
+            'addressline1' => 'required|alpha_dash|max:255',
+            'suburb' => 'required|alpha|max:255',
+            'state' => 'required|alpha|max:255',
+            'postcode' => 'required|size:4|integer',
+        ]);   
+
+        if($validate0->fails())
+        {
+            return redirect('')->withErrors($validate)->withInput();
+        }
         DB::transaction(function() use ($request) {
             Auth::user()->fill($request->all())->update();
         });
