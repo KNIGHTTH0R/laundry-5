@@ -11,35 +11,38 @@ Edit User
     {!! csrf_field() !!}
     <table class="table1">
         <tr>
-            <td>User ID</td>
+            <td>User ID<span style="color: red">*</span></td>
             <td>{{ $user->id }}</td>
         </tr>
         <tr>
-            <td>Firstname</td>
+            <td>Firstname<span style="color: red">*</span></td>
             <td><input type="text" name="firstname" value="{{ $user->firstname }}" /></td>
         </tr>
         <tr>
-            <td>Lastname</td>
+            <td>Lastname<span style="color: red">*</span></td>
             <td><input type="text" name="lastname" value="{{ $user->lastname }}" /></td>
         </tr>
         <tr>
-            <td>Email</td>
+            <td>Email<span style="color: red">*</span></td>
             <td>{{ $user->email }}</td>
         </tr>
         <tr>
-            <td>Role</td>
-            <td>{{ $user->role }}</td>
+            <td>Role<span style="color: red">*</span></td>
+            <td>
+                <input type="radio" name="role" value="customer" <?php echo $user->role == 'customer' ? 'checked' : ''; ?> />customer
+                <input type="radio" name="role" value="staff" <?php echo $user->role == 'staff' ? 'checked' : ''; ?> />staff
+            </td>
         </tr>
         <tr>
-            <td>Phone Number</td>
+            <td>Phone</td>
             <td><input type="text" name="phone" value="{{ $user->phone }}" /></td>
         </tr>
         <tr>
-            <td>Address 1</td>
+            <td>Addressline 1</td>
             <td><input type="text" name="addressline1" value="{{ $user->addressline1 }}" /></td>
         </tr>
         <tr>
-            <td>Address 2</td>
+            <td>Addressline 2</td>
             <td><input type="text" name="addressline2" value="{{ $user->addressline2 }}" /></td>
         </tr>
         <tr>

@@ -10,16 +10,16 @@ New Order
     {!! csrf_field() !!}
     <table class="table1">
         <tr>
-            <td>User ID</td>
-            <td><input type="number" name="user_id" class="input-field" /></td>
+            <td>User ID<span style="color: red">*</span></td>
+            <td><input type="number" name="user_id" class="input-field" value="{{ old('user_id') }}" /></td>
         </tr>
         <tr>
-            <td>Laundry (kg)</td>
-            <td><input type="number" name="laundry" class="input-field" min="0" onchange="changeTotal(laundry, ironing)" /></td>
+            <td>Laundry (kg)<span style="color: red">*</span></td>
+            <td><input type="number" name="laundry" class="input-field" min="0" value="{{ old('laundry') }}" onchange="changeTotal(laundry, ironing)" /></td>
         </tr>
         <tr>
-            <td>Ironing (kg)</td>
-            <td><input type="number" name="ironing" class="input-field" min="0" onchange="changeTotal(laundry, ironing)" /></td>
+            <td>Ironing (kg)<span style="color: red">*</span></td>
+            <td><input type="number" name="ironing" class="input-field" min="0" value="{{ old('ironing') }}" onchange="changeTotal(laundry, ironing)" /></td>
         </tr>
 
         <tr>
@@ -27,19 +27,19 @@ New Order
             <td id="total"></td>
         </tr>
         <tr>
-            <td>Pickup Date</td>
-            <td><input type="date" name="pickup" class="input-field" /></td>
+            <td>Pickup Date<span style="color: red">*</span></td>
+            <td><input type="date" name="pickup" class="input-field" value="{{ old('pickup') }}" /></td>
         </tr>
         <tr>
-            <td>Delivery Date</td>
-            <td><input type="date" name="delivery" class="input-field" /></td>
+            <td>Delivery Date<span style="color: red">*</span></td>
+            <td><input type="date" name="delivery" class="input-field" value="{{ old('delivery') }}" /></td>
         </tr>
         <tr>
             <td>Notes</td>
-            <td><textarea name="notes"></textarea></td>
+            <td><textarea name="notes">{{ old('notes') }}</textarea></td>
         </tr>
         <tr>
-            <td>Laundry Status</td>
+            <td>Laundry Status<span style="color: red">*</span></td>
             <td class="input-radio">
                 <input type="radio" name="laundry_status" value="initial" checked="true" />initial
                 <input type="radio" name="laundry_status" value="picked" />picked
@@ -49,7 +49,7 @@ New Order
             </td>
         </tr>
         <tr>
-            <td>Payment Status</td>
+            <td>Payment Status<span style="color: red">*</span></td>
             <td>
                 <input type="radio" name="payment_status" value="unpaid" checked="true" />unpaid
                 <input type="radio" name="payment_status" value="paid" />paid

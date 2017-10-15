@@ -9,6 +9,8 @@ Route::group(['middleware' => 'admin', 'namespace' => 'Admin', 'prefix' => 'admi
     Route::get('/', 'HomeController@index');
     Route::resource('orders', 'OrderController');
     Route::resource('users', 'UserController');
+    Route::get('search_orders', 'OrderController@search');
+    Route::get('search_users', 'UserController@search');
 });
 
 Route::group(['middleware' => 'client', 'namespace' => 'Client'], function() {

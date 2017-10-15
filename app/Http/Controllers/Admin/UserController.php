@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -16,7 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('admin/user/index', ['users' => User::all()]);
+        return view('admin/user/index', ['users' => User::OrderBy('id', 'desc')->get()]);
     }
 
     /**
@@ -37,15 +38,19 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'firstname' => 'required|string',
+            'lastname' => 'required|string',
+            'email' => 'required|string',
+            'password' => 'required|string',
+            'role' => 'required|string',
+        ]);
+
         $user = new User($request->all());
         $user->password = bcrypt($request->password);
-        $user->role = 'customer';
-
-        if ($user->save()) {
-            return redirect()->to('admin/users');
-        } else {
-            return redirect()->to('error');
-        }
+        $user->save();
+        
+        return redirect()->to('admin/users');
     }
 
     /**
@@ -79,14 +84,19 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::find($id);
-        $user->fill($request->all());
+        $this->validate($request, [
+            'firstname' => 'required|string',
+            'lastname' => 'required|string',
+            'role' => 'required|string',
+        ]);
 
-        if ($user->update()) {
-            return redirect()->to('admin/users/' . $id);
-        } else {
-            return redirect()->to('error');
-        }
+        DB::transaction(function() use ($request, $id) {
+            $user = User::find($id);
+            $user->fill($request->all());
+            $user->update();
+        });
+
+        return redirect()->to('admin/users/' . $id);
     }
 
     /**
@@ -97,11 +107,34 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        if (User::find($id)->delete()) {
-            return redirect()->to('admin/users');
+        DB::transaction(function() use ($id) {
+            User::find($id)->delete();
+        });
+        
+        return redirect()->to('admin/users');
+    }
+
+    /**
+     * Return table of search results.
+     * 
+     * @param type $request
+     */
+    public function search(Request $request)
+    {
+        $users = collect();
+        
+        if (!isset($request->user_id) && !isset($request->email)) {
+            $users = User::OrderBy('id', 'desc')->get();
+        } else if (isset($request->user_id)) {
+            $user = User::find($request->user_id);
+            if (!empty($user)) {
+                $users->push($user);
+            }
         } else {
-            return redirect()->to('error');
-        }    
+            $users = User::where('email', 'like', '%' . $request->email . '%')->OrderBy('id', 'desc')->get();
+        }
+        
+        return view('admin/user/searchResults', ['users' => $users]);
     }
 
 }
