@@ -10,6 +10,8 @@ My Profile
         <td>First Name</td>
         <td><input type="text" name="firstname" id="firstname" value="{{ $user-> firstname }}" />
 
+        {{ $errors->has('user_id')?'user is error':'' }}
+
         @if ($errors->has('firstname'))
         <span class="help-block">
             <strong>{{ $errors->first('firstname') }}</strong>
