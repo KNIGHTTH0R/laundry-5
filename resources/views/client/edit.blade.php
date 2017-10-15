@@ -15,15 +15,27 @@ Edit Order
         </tr>
         <tr>
             <td>User ID</td>
-            <td><input type="number" name="user_id" value="{{ $order->user_id }}" /></td>
+            <td>{{ $order->user_id }}</td>
         </tr>
         <tr>
             <td>Laundry (kg)</td>
-            <td><input type="number" name="laundry" min="0" value="{{ $order->laundry }}" onchange="changeTotal(laundry, ironing)" /></td>
+            <td><input type="number" name="laundry" min="0" value="{{ $order->laundry }}" onchange="changeTotal(laundry, ironing)" />
+            @if ($errors->has('laundry'))
+            <span class="help-block">
+                <strong>{{ $errors->first('laundry') }}</strong>
+            </span>
+            @endif
+            </td>
         </tr>
         <tr>
             <td>Ironing (kg)</td>
-            <td><input type="number" name="ironing" min="0" value="{{ $order->ironing }}" onchange="changeTotal(laundry, ironing)" /></td>
+            <td><input type="number" name="ironing" min="0" value="{{ $order->ironing }}" onchange="changeTotal(laundry, ironing)" />
+            @if ($errors->has('ironing'))
+            <span class="help-block">
+                <strong>{{ $errors->first('ironing') }}</strong>
+            </span>
+            @endif
+            </td>
         </tr>
         <tr>
             <td>Total Amount</td>
@@ -31,15 +43,33 @@ Edit Order
         </tr>
         <tr>
             <td>Pickup Date</td>
-            <td><input type="date" name="pickup" value="{{ $order->pickup }}" /></td>
+            <td><input type="date" name="pickup" value="{{ $order->pickup }}" />
+            @if ($errors->has('pickup'))
+            <span class="help-block">
+                <strong>{{ $errors->first('pickup') }}</strong>
+            </span>
+            @endif
+            </td>
         </tr>
         <tr>
             <td>Delivery Date</td>
-            <td><input type="date" name="delivery" value="{{ $order->delivery }}" /></td>
+            <td><input type="date" name="delivery" value="{{ $order->delivery }}" />
+            @if ($errors->has('delivery'))
+            <span class="help-block">
+                <strong>{{ $errors->first('delivery') }}</strong>
+            </span>
+            @endif
+            </td>
         </tr>
         <tr>
             <td>Notes</td>
-            <td><textarea name="notes">{{ $order->notes }}</textarea></td>
+            <td><textarea name="notes">{{ $order->notes }}</textarea>
+            @if ($errors->has('notes'))
+            <span class="help-block">
+                <strong>{{ $errors->first('notes') }}</strong>
+            </span>
+            @endif
+            </td>
         </tr>
     </table>
     <input type="submit" value="Submit" class="btn btn-default" />

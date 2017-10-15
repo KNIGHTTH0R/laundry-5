@@ -9,15 +9,15 @@ Overview
     <table>
         <tr>
             <td>Customer Name</td>
-            <td><input type="text" name="lastname" value="{{ $user->lastname }}"></td>
+            <td><input type="text" name="lastname" value=""></td>
         </tr>
         <tr>
             <td>Address</td>
-            <td><input type="text" name="addressline1" value="{{ $user->addressline1 }}"></td>
+            <td><input type="text" name="addressline1" value=""></td>
         </tr>
         <tr>
             <td>Phone Number</td>
-            <td><input type="number" name="phone" value="{{ $user->phone }}"></td>
+            <td><input type="number" name="phone" value=""></td>
         </tr>
         <tr>
             <td>Card Number</td>
