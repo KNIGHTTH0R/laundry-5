@@ -8,7 +8,14 @@ My Profile
 <table class="table1">
     <tr>
         <td>First Name</td>
-        <td><input type="text" name="firstname" id="firstname" value="{{ $user-> firstname }}" /></td>
+        <td><input type="text" name="firstname" id="firstname" value="{{ $user-> firstname }}" />
+
+        @if ($errors->has('firstname'))
+        <span class="help-block">
+            <strong>{{ $errors->first('firstname') }}</strong>
+        </span>
+        @endif
+        </td>
     </tr>        
     <tr>
         <td>Last Name</td>
