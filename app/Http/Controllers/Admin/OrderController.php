@@ -38,14 +38,21 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'user_id' => 'required|string',
+            'laundry' => 'required|string',
+            'ironing' => 'required|string',
+            'pickup' => 'required|string',
+            'delivery' => 'required|string',
+            'laundry_status' => 'required|string',
+            'payment_status' => 'required|string'
+        ]);
+
         $order = new Order($request->all());
         $order->total = ($order->laundry + $order->ironing) * 5;
-
-        if ($order->save()) {
-            return redirect('admin/orders');
-        } else {
-            return redirect('error');
-        }
+        $order->save();
+        
+        return redirect('admin/orders');
     }
 
     /**
@@ -79,6 +86,16 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'user_id' => 'required|string',
+            'laundry' => 'required|string',
+            'ironing' => 'required|string',
+            'pickup' => 'required|string',
+            'delivery' => 'required|string',
+            'laundry_status' => 'required|string',
+            'payment_status' => 'required|string'
+        ]);
+
         DB::transaction(function() use ($request, $id) {
             $order = Order::find($id);
             $order->fill($request->all());
@@ -100,7 +117,31 @@ class OrderController extends Controller
         DB::transaction(function() use ($id) {
             Order::find($id)->delete();
         });
+        
         return redirect('admin/orders');
+    }
+
+    /**
+     * Return table of search results.
+     * 
+     * @param type $request
+     */
+    public function search(Request $request)
+    {
+        $orders = collect();
+        
+        if (!isset($request->order_id) && !isset($request->user_id)) {
+            $orders = Order::OrderBy('id', 'desc')->get();
+        } else if (isset($request->order_id)) {
+            $order = Order::find($request->order_id);
+            if (!empty($order)) {
+                $orders->push($order);
+            }
+        } else {
+            $orders = Order::where('user_id', '=', $request->user_id)->OrderBy('id', 'desc')->get();
+        }
+        
+        return view('admin/order/searchResults', ['orders' => $orders]);
     }
 
 }
