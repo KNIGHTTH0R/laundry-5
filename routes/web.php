@@ -17,7 +17,7 @@ Route::group(['middleware' => 'client', 'namespace' => 'Client'], function() {
 
     Route::resource('user_orders', 'OrderController');
 
-    Route::get('pay/{id}', 'PaymentController@pay');
+    Route::get('pay', 'PaymentController@pay');
     Route::get('overview', 'PaymentController@overview');
 });
 

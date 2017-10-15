@@ -43,6 +43,15 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, 
+        [
+            'laundry' => 'bail|required|numeric|min:0|max:100',
+            'ironing' => 'bail|required|numeric|min:0|max:100',
+            'pickup' => 'bail|required|date|after:tomorrow',
+            'delivery' => 'bail|required|date|after:pickup',
+            'notes' => 'bail|required|alpha_dash',
+        ]);
+
         $order = new Order($request->all());
 
         $order->user_id = Auth::id();
@@ -91,6 +100,15 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, 
+        [
+            'laundry' => 'bail|required|numeric|min:0|max:100',
+            'ironing' => 'bail|required|numeric|min:0|max:100',
+            'pickup' => 'bail|required|date|after:tomorrow',
+            'delivery' => 'bail|required|date|after:pickup',
+            'notes' => 'bail|required|alpha_dash',
+        ]);
+
         $order = Order::find($id);
         $order->fill($request->all());
 

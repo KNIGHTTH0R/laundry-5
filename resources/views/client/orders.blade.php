@@ -63,7 +63,7 @@ Order Details
             </form>
         </td>
         <td>
-            <form action="{{ url('pay/'.$order->user_id) }}" method="GET">
+            <form action="{{ url('pay') }}" method="GET">
                 <input type="submit" value="Book" class="btn btn-default" />
             </form>
         </td>
