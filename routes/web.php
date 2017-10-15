@@ -15,11 +15,15 @@ Route::group(['middleware' => 'client', 'namespace' => 'Client'], function() {
     Route::get('profile', 'UserController@show');
     Route::put('profile/update', 'UserController@update');
 
-    Route::resource('user_orders','OrderController');
-    
+    Route::resource('user_orders', 'OrderController');
+
     Route::get('pay/{id}', 'PaymentController@pay');
     Route::get('overview', 'PaymentController@overview');
 });
 
 Route::get('basicmail', 'Mail\MailController@basic_email');
 Route::get('attachemail', 'Mail\MailController@attachment_email');
+
+Route::get('error', function() {
+    return view('error');
+})->name('error');
