@@ -20,11 +20,11 @@ Edit Order
         </tr>
         <tr>
             <td>Laundry (kg)<span style="color: red">*</span></td>
-            <td><input type="number" name="laundry" id="laundry" class="input-field" min="0" value="{{ $order->laundry }}" onchange="changeTotal(laundry, ironing)" /></td>
+            <td><input type="number" name="laundry" id="laundry" class="input-field" min="0" value="{{ $order->laundry }}" onchange="changeTotal()" /></td>
         </tr>
         <tr>
             <td>Ironing (kg)<span style="color: red">*</span></td>
-            <td><input type="number" name="ironing" id="ironing" class="input-field" min="0" value="{{ $order->ironing }}" onchange="changeTotal(laundry, ironing)" /></td>
+            <td><input type="number" name="ironing" id="ironing" class="input-field" min="0" value="{{ $order->ironing }}" onchange="changeTotal()" /></td>
         </tr>
         <tr>
             <td>Total Amount</td>

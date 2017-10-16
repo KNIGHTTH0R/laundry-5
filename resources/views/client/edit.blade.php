@@ -19,29 +19,21 @@ Edit Order
         </tr>
         <tr>
             <td>Laundry (kg)</td>
-            <td><input type="number" name="laundry" min="0" value="{{ $order->laundry }}" onchange="changeTotal(laundry, ironing)" />
-            @if ($errors->has('laundry'))
-            <span class="help-block">
-                <strong>{{ $errors->first('laundry') }}</strong>
-            </span>
-            @endif
+            <td>
+                <input type="number" name="laundry" min="0" id="laundry" value="{{ $order->laundry  }}" onchange="changeTotal()" />
+                <span class="help-block">{{ $errors->first('laundry') }}</span>
             </td>
         </tr>
         <tr>
             <td>Ironing (kg)</td>
-            <td><input type="number" name="ironing" min="0" value="{{ $order->ironing }}" onchange="changeTotal(laundry, ironing)" />
-            @if ($errors->has('ironing'))
-            <span class="help-block">
-                <strong>{{ $errors->first('ironing') }}</strong>
-            </span>
-            @endif
+            <td><input type="number" name="ironing" min="0" id="ironing" value="{{  $order->ironing }}" onchange="changeTotal()" />
+                <span class="help-block">{{ $errors->first('ironing') }}</span>
             </td>
         </tr>
         <tr>
             <td>Total Amount</td>
-            <td id="total">{{ ($order->laundry + $order->ironing)*5 }}$</td>
-        </tr>
-        <tr>
+            <td id="total"></td>
+        </tr>        <tr>
             <td>Pickup Date</td>
             <td><input type="date" name="pickup" value="{{ $order->pickup }}" />
             @if ($errors->has('pickup'))
