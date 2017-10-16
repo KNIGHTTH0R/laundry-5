@@ -20,7 +20,7 @@ class OrderController extends Controller
     public function index()
     {
         $orders = Order::where('user_id', Auth::id())->where('payment_status', 'unpaid')->get();
-        
+
         return view('client/orders', ['orders' => $orders]);
     }
 
@@ -33,7 +33,7 @@ class OrderController extends Controller
     public function history()
     {
         $orders = Order::where('user_id', Auth::id())->where('payment_status', 'paid')->get();
-        
+
         return view('client/history', ['orders' => $orders]);
     }
 
@@ -88,7 +88,11 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        return view('client/edit', ['order' => Order::find($id)]);
+        $order = Order::find($id);
+        if ($order->user_id == Auth::id()) {
+            return redirect('error');
+        }
+        return view('client/edit', ['order' => $order]);
     }
 
     /**
@@ -110,6 +114,9 @@ class OrderController extends Controller
 
         DB::transaction(function() use ($request, $id) {
             $order = Order::find($id);
+            if ($order->user_id == Auth::id()) {
+                return redirect('error');
+            }
             $order->fill($request->all());
             $order->total = ($order->laundry + $order->ironing) * 5;
             $order->update();
