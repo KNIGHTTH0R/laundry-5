@@ -43,12 +43,12 @@ class UserController extends Controller
         $this->validate($request, [
             'firstname' => 'required|string|max:255',
             'lastname' => 'required|string|max:255',
-            'phone' => 'nullable|size:10',
+            'phone' => 'nullable|numeric|digits:10',
             'addressline1' => 'nullable|string|max:255',
             'addressline2' => 'nullable|string|max:255',
             'suburb' => 'nullable|string|max:255',
             'state' => 'nullable|string|max:255',
-            'postcode' => 'nullable|min:4|max:4',
+            'postcode' => 'nullable|numeric|digits:4',
         ]);
 
         DB::transaction(function() use ($request) {
