@@ -109,13 +109,7 @@ class OrderController extends Controller
         ]);
 
         $order = Order::find($id)->where('user_id', Auth::id());
-        if (isset($order)) {
-            $order->fill($request->all());
-        } else {
-            return redirect()->to('error');
-        }
         
-
         if ($order->update()) {
             return redirect()->to('user_orders');
         } else {
