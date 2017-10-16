@@ -7,6 +7,7 @@ use App\Order;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Validator;
 
 class PaymentController extends Controller
@@ -32,6 +33,12 @@ class PaymentController extends Controller
             'expiration_date' => 'bail|required|after_or_equal:tomorrow',
             'cw' => 'bail|required|integer|digits_between:3,3',
         ]);
+
+        DB::transaction(function() use ($id) {
+            $order = Order::find($id);
+            $order->payment_status = "paid";
+            $order->update();
+        });
 
         return view('client/overview', ['bill' => $request], ['order' => Order::find($id)] );
     }
