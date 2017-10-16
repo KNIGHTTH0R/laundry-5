@@ -108,8 +108,13 @@ class OrderController extends Controller
             'notes' => 'bail|nullable|string',
         ]);
 
-        $order = Order::find($id);
-        $order->fill($request->all());
+        $order = Order::find($id)->where('user_id', Auth::id());
+        if (isset($order)) {
+            $order->fill($request->all());
+        } else {
+            return redirect()->to('error');
+        }
+        
 
         if ($order->update()) {
             return redirect()->to('user_orders');
