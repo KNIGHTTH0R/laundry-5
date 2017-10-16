@@ -12,7 +12,8 @@
 
         <!-- Styles -->
         <style>
-            html, body {
+            html, body 
+            {
                 background-color: #fff;
                 color: #636b6f;
                 font-family: 'Raleway', sans-serif;
@@ -20,30 +21,36 @@
                 height: 100vh;
                 margin: 0;
             }
-            .full-height {
+            .full-height 
+            {
                 height: 100vh;
             }
-            .flex-center {
+            .flex-center 
+            {
                 align-items: center;
                 display: flex;
                 justify-content: center;
             }
-            .position-ref {
+            .position-ref 
+            {
                 position: relative;
             }
-            .top-right {
+            .top-right 
+            {
                 position: absolute;
                 right: 10px;
                 top: 18px;
             }
-            .content {
+            .content 
+            {
                 text-align: center;
             }
             .title {
                 font-size: 84px;
                 font-weight: bold;
             }
-            .links > a {
+            .links > a 
+            {
                 color: #636b6f;
                 padding: 0 25px;
                 font-size: 12px;
@@ -52,14 +59,17 @@
                 text-decoration: none;
                 text-transform: uppercase;
             }
-            .m-b-md {
+            .m-b-md 
+            {
                 margin-bottom: 30px;
             }
-            .middle {
+            .middle 
+            {
                 margin-left: auto;
                 margin-right: auto;
             }
-            .table-font {
+            .table-font 
+            {
                 color: grey;
                 font-size: 20px;
                 font-weight: bold;

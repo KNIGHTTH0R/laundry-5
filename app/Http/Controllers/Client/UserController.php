@@ -51,7 +51,8 @@ class UserController extends Controller
             'postcode' => 'nullable|numeric|digits:4',
         ]);
 
-        DB::transaction(function() use ($request) {
+        DB::transaction(function() use ($request) 
+        {
             Auth::user()->fill($request->all())->update();
         });
         

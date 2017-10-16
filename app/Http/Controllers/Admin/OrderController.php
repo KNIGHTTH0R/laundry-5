@@ -116,7 +116,8 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        DB::transaction(function() use ($id) {
+        DB::transaction(function() use ($id) 
+        {
             Order::find($id)->delete();
         });
 
@@ -132,7 +133,8 @@ class OrderController extends Controller
     {
         $orders = collect();
 
-        if (!isset($request->order_id) && !isset($request->user_id)) {
+        if (!isset($request->order_id) && !isset($request->user_id)) 
+        {
             $orders = Order::OrderBy('id', 'desc')->get();
         } else if (isset($request->order_id)) {
             $order = Order::find($request->order_id);

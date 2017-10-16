@@ -45,7 +45,8 @@ use AuthenticatesUsers;
      */
     public function redirectPath()
     {
-        if (Auth::user()->role == 'staff') {
+        if (Auth::user()->role == 'staff') 
+        {
             $this->redirectTo = 'admin';
         }
         return property_exists($this, 'redirectTo') ? $this->redirectTo : '/home';

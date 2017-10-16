@@ -8,7 +8,9 @@ Route::get('about', function () {
 
 Auth::routes();
 
-Route::group(['middleware' => 'admin', 'namespace' => 'Admin', 'prefix' => 'admin'], function() {
+Route::group(['middleware' => 'admin', 'namespace' => 'Admin', 'prefix' => 'admin'], 
+    function()
+{
     Route::get('/', 'HomeController@index');
     Route::resource('orders', 'OrderController');
     Route::resource('users', 'UserController');
@@ -16,7 +18,8 @@ Route::group(['middleware' => 'admin', 'namespace' => 'Admin', 'prefix' => 'admi
     Route::get('search_users', 'UserController@search');
 });
 
-Route::group(['middleware' => 'client', 'namespace' => 'Client'], function() {
+Route::group(['middleware' => 'client', 'namespace' => 'Client'], function() 
+{
     Route::get('profile', 'UserController@show');
     Route::get('profile/edit', 'UserController@edit');
     Route::put('profile/update', 'UserController@update');
