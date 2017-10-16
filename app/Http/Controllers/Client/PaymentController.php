@@ -15,21 +15,22 @@ use Validator;
 class PaymentController extends Controller
 {
     /**
-     * Display payment page
      * 
+     * @param int id 
      * @return \Illuminate\Http\Response
      */
-    public function paymentForm()
+    public function paymentForm($id)
     {
-        return view('client/payment', ['user' => Auth::user()], ['order' => Order::find(Auth::id())]);
+        return view('client/payment', ['user' => Auth::user()], ['order' => Order::find($id)]);
     }
 
     /**
      * 
      * @param Request $request
+     * @param int id 
      * @return \Illuminate\Http\Response
      */
-    public function checkout(Request $request)
+    public function checkout(Request $request, $id)
     {
         $this->validate($request, [
             'firstname' => 'required|alpha|max:50',
@@ -46,18 +47,20 @@ class PaymentController extends Controller
             'cw' => 'required|numeric|digits_between:3,3',
         ]);
 
-        DB::transaction(function() use ($request) {
+        DB::transaction(function() use ($request, $id) {
             Auth::user()->fill($request->all())->update();
-            $order = Order::find(Auth::id());
+            $order = Order::find($id);
+            if ($order->user_id != Auth::id())
+                return redirect('error');
             $order->payment_status = "paid";
             $order->update();
         });
 
-        $order = Order::find(Auth::id());
+        $order = Order::find($id);
 
         Mail::to(Auth::user()->email)->send(new OrderShipped($order));
 
-        return view('client/overview', ['bill' => $request], ['order' => $order]);
+        return view('client/overview', ['bill' => $request], ['order' => Order::find($id)]);
     }
 
 }

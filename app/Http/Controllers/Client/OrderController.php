@@ -89,7 +89,7 @@ class OrderController extends Controller
     public function edit($id)
     {
         $order = Order::find($id);
-        if ($order->user_id == Auth::id()) {
+        if ($order->user_id != Auth::id()) {
             return redirect('error');
         }
         return view('client/edit', ['order' => $order]);
@@ -114,7 +114,7 @@ class OrderController extends Controller
 
         DB::transaction(function() use ($request, $id) {
             $order = Order::find($id);
-            if ($order->user_id == Auth::id()) {
+            if ($order->user_id != Auth::id()) {
                 return redirect('error');
             }
             $order->fill($request->all());

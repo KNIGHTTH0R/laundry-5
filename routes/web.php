@@ -25,8 +25,8 @@ Route::group(['middleware' => 'client', 'namespace' => 'Client'], function()
     Route::put('profile/update', 'UserController@update');
     Route::resource('user_orders', 'OrderController');
     
-    Route::get('payment', 'PaymentController@paymentForm');
-    Route::post('checkout', 'PaymentController@checkout');
+    Route::get('payment/{id}', 'PaymentController@paymentForm');
+    Route::post('checkout/{id}', 'PaymentController@checkout');
     Route::get('history', 'OrderController@history');
 });
 

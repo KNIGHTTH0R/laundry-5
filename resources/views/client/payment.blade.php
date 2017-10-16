@@ -5,7 +5,7 @@ All Orders
 @endsection
 
 @section('content')
-<form action="{{ url('checkout') }}" method="POST">
+<form action="{{ url('checkout/'.$order->id) }}" method="POST">
     {!! csrf_field() !!}
     <table class="table1">
         <tr>
