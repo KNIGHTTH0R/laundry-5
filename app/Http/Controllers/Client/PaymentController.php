@@ -4,15 +4,20 @@ namespace App\Http\Controllers\Client;
 
 use App\User;
 use App\Order;
+use App\Mail\OrderShipped;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Validator;
 
 class PaymentController extends Controller
 {
-    //
+    /**
+    * 
+    *
+    */
     public function pay($id)
     {
         return view('client/payment', ['user' => Auth::user()], ['order' => Order::find($id)]);
@@ -34,11 +39,16 @@ class PaymentController extends Controller
             'cw' => 'bail|required|integer|digits_between:3,3',
         ]);
 
-        DB::transaction(function() use ($id) {
+        DB::transaction(function() use ($id) 
+        {
             $order = Order::find($id);
             $order->payment_status = "paid";
             $order->update();
         });
+
+        $order = Order::find($id);
+
+        Mail::to($request->email)->send(new OrderShipped($order));
 
         return view('client/overview', ['bill' => $request], ['order' => Order::find($id)] );
     }

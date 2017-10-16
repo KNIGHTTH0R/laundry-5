@@ -131,7 +131,7 @@ class OrderController extends Controller
             return redirect()->to('error');
         }
     }
-    
+
     /**
      * Remove the specified resource from storage.
      *
