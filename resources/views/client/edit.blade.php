@@ -21,46 +21,47 @@ Edit Order
             <td>Laundry (kg)</td>
             <td>
                 <input type="number" name="laundry" min="0" id="laundry" value="{{ $order->laundry  }}" onchange="changeTotal()" />
-                <span class="help-block">{{ $errors->first('laundry') }}</span>
+                <span class="alert">{{ $errors->first('laundry') }}</span>
             </td>
         </tr>
         <tr>
             <td>Ironing (kg)</td>
             <td><input type="number" name="ironing" min="0" id="ironing" value="{{  $order->ironing }}" onchange="changeTotal()" />
-                <span class="help-block">{{ $errors->first('ironing') }}</span>
+                <span class="alert">{{ $errors->first('ironing') }}</span>
             </td>
         </tr>
         <tr>
             <td>Total Amount</td>
             <td id="total"></td>
-        </tr>        <tr>
+        </tr>
+        <tr>
             <td>Pickup Date</td>
             <td><input type="date" name="pickup" value="{{ $order->pickup }}" />
-            @if ($errors->has('pickup'))
-            <span class="help-block">
-                <strong>{{ $errors->first('pickup') }}</strong>
-            </span>
-            @endif
+                @if ($errors->has('pickup'))
+                <span class="alert">
+                    <strong>{{ $errors->first('pickup') }}</strong>
+                </span>
+                @endif
             </td>
         </tr>
         <tr>
             <td>Delivery Date</td>
             <td><input type="date" name="delivery" value="{{ $order->delivery }}" />
-            @if ($errors->has('delivery'))
-            <span class="help-block">
-                <strong>{{ $errors->first('delivery') }}</strong>
-            </span>
-            @endif
+                @if ($errors->has('delivery'))
+                <span class="alert">
+                    <strong>{{ $errors->first('delivery') }}</strong>
+                </span>
+                @endif
             </td>
         </tr>
         <tr>
             <td>Notes</td>
             <td><textarea name="notes">{{ $order->notes }}</textarea>
-            @if ($errors->has('notes'))
-            <span class="help-block">
-                <strong>{{ $errors->first('notes') }}</strong>
-            </span>
-            @endif
+                @if ($errors->has('notes'))
+                <span class="alert">
+                    <strong>{{ $errors->first('notes') }}</strong>
+                </span>
+                @endif
             </td>
         </tr>
     </table>

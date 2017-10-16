@@ -21,13 +21,11 @@ Route::group(['middleware' => 'client', 'namespace' => 'Client'], function() {
     Route::get('profile/edit', 'UserController@edit');
     Route::put('profile/update', 'UserController@update');
     Route::resource('user_orders', 'OrderController');
-    Route::get('pay/{id}', 'PaymentController@pay');
-    Route::post('overview/{id}', 'PaymentController@overview');
+    
+    Route::get('payment', 'PaymentController@paymentForm');
+    Route::post('checkout', 'PaymentController@checkout');
     Route::get('history', 'OrderController@history');
 });
-
-Route::get('basicmail', 'Mail\MailController@basic_email');
-Route::get('attachemail', 'Mail\MailController@attachment_email');
 
 Route::get('error', function() {
     return view('error');

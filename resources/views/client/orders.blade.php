@@ -65,7 +65,7 @@ Order Details
             </form>
         </td>
         <td>
-            <form action="{{ url('pay/'.$order->id) }}" method="GET">
+            <form action="{{ url('payment') }}" method="GET">
                 <input type="submit" value="Checkout" class="btn btn-default" />
             </form>
         </td>

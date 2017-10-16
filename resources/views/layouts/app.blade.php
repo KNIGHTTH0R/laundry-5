@@ -53,7 +53,7 @@
                             @if (Auth::user() && Auth::user()->role == 'staff')
                             <li><a href="{{ url('admin') }}">Admin Console</a></li>
                             @else
-                            <li><a href="{{ url('user_orders/show') }}">Book Order</a></li>
+                            <li><a href="{{ url('user_orders/create') }}">Book Order</a></li>
                             <li><a href="{{ url('user_orders')}}">My Orders</a></li>
                             <li><a href="{{ url('profile') }}">My Profile</a></li>
                             <li><a href="{{ url('history') }}">Purchased History</a></li>

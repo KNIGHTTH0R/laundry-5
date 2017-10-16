@@ -35,7 +35,7 @@ Edit User
         </tr>
         <tr>
             <td>Phone</td>
-            <td><input type="text" name="phone" class="input-field" value="{{ $user->phone }}" /></td>
+            <td><input type="phone" name="phone" class="input-field" value="{{ $user->phone }}" /></td>
         </tr>
         <tr>
             <td>Addressline 1</td>

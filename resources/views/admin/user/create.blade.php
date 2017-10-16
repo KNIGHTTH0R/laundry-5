@@ -34,7 +34,7 @@ New User
         </tr>
         <tr>
             <td>Phone</td>
-            <td><input type="text" name="phone" value="{{ old('phone') }}" /></td>
+            <td><input type="phone" name="phone" value="{{ old('phone') }}" /></td>
         </tr>
         <tr>
             <td>Addressline 1</td>

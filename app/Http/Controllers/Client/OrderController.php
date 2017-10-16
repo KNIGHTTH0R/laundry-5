@@ -81,17 +81,6 @@ class OrderController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        return view('client/book', ['order' => Order::find($id)]);
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -116,7 +105,7 @@ class OrderController extends Controller
             'ironing' => 'bail|required|numeric|min:0|max:100',
             'pickup' => 'bail|required|date|after:tomorrow',
             'delivery' => 'bail|required|date|after:pickup',
-            'notes' => 'bail|required|alpha_dash',
+            'notes' => 'bail|nullable|string',
         ]);
 
         $order = Order::find($id);

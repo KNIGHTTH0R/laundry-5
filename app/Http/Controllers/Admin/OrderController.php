@@ -40,10 +40,11 @@ class OrderController extends Controller
     {
         $this->validate($request, [
             'user_id' => 'required|string',
-            'laundry' => 'required|string',
-            'ironing' => 'required|string',
-            'pickup' => 'required|string',
-            'delivery' => 'required|string',
+            'laundry' => 'required|numeric|min:0|max:100',
+            'ironing' => 'required|numeric|min:0|max:100',
+            'pickup' => 'required|date|after:tomorrow',
+            'delivery' => 'required|date|after:pickup',
+            'notes' => 'nullable|string|max:255',
             'laundry_status' => 'required|string',
             'payment_status' => 'required|string'
         ]);
@@ -51,7 +52,7 @@ class OrderController extends Controller
         $order = new Order($request->all());
         $order->total = ($order->laundry + $order->ironing) * 5;
         $order->save();
-        
+
         return redirect('admin/orders');
     }
 
@@ -87,11 +88,12 @@ class OrderController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'user_id' => 'required|string',
-            'laundry' => 'required|string',
-            'ironing' => 'required|string',
-            'pickup' => 'required|string',
-            'delivery' => 'required|string',
+            'user_id' => 'required|numeric',
+            'laundry' => 'required|numeric|min:0|max:100',
+            'ironing' => 'required|numeric|min:0|max:100',
+            'pickup' => 'required|date|after:tomorrow',
+            'delivery' => 'required|date|after:pickup',
+            'notes' => 'nullable|string|max:255',
             'laundry_status' => 'required|string',
             'payment_status' => 'required|string'
         ]);
@@ -117,7 +119,7 @@ class OrderController extends Controller
         DB::transaction(function() use ($id) {
             Order::find($id)->delete();
         });
-        
+
         return redirect('admin/orders');
     }
 
@@ -129,7 +131,7 @@ class OrderController extends Controller
     public function search(Request $request)
     {
         $orders = collect();
-        
+
         if (!isset($request->order_id) && !isset($request->user_id)) {
             $orders = Order::OrderBy('id', 'desc')->get();
         } else if (isset($request->order_id)) {
@@ -140,7 +142,7 @@ class OrderController extends Controller
         } else {
             $orders = Order::where('user_id', '=', $request->user_id)->OrderBy('id', 'desc')->get();
         }
-        
+
         return view('admin/order/searchResults', ['orders' => $orders]);
     }
 
