@@ -32,7 +32,7 @@ class PaymentController extends Controller
     public function checkout(Request $request)
     {
         $this->validate($request, [
-            'firstname' => 'required|alpha|max:255',
+            'firstname' => 'required|alpha|max:50',
             'lastname' => 'required|alpha|max:255',
             'phone' => 'required|numeric|digits:10',
             'addressline1' => 'required|string|max:255',

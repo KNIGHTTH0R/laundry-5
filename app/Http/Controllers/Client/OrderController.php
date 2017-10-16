@@ -101,20 +101,21 @@ class OrderController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'laundry' => 'bail|required|numeric|min:0|max:100',
-            'ironing' => 'bail|required|numeric|min:0|max:100',
-            'pickup' => 'bail|required|date|after:tomorrow',
-            'delivery' => 'bail|required|date|after:pickup',
-            'notes' => 'bail|nullable|string',
+            'laundry' => 'required|numeric|min:0|max:100',
+            'ironing' => 'required|numeric|min:0|max:100',
+            'pickup' => 'required|date|after:tomorrow',
+            'delivery' => 'required|date|after:pickup',
+            'notes' => 'nullable|string|max:255'
         ]);
 
-        $order = Order::find($id)->where('user_id', Auth::id());
-        
-        if ($order->update()) {
-            return redirect()->to('user_orders');
-        } else {
-            return redirect()->to('error');
-        }
+        DB::transaction(function() use ($request, $id) {
+            $order = Order::find($id);
+            $order->fill($request->all());
+            $order->total = ($order->laundry + $order->ironing) * 5;
+            $order->update();
+        });
+
+        return redirect('user_orders');
     }
 
     /**
