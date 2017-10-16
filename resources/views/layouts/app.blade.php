@@ -56,6 +56,8 @@
                             <li><a href="{{ url('user_orders/show') }}">Book Order</a></li>
                             <li><a href="{{ url('user_orders')}}">My Orders</a></li>
                             <li><a href="{{ url('profile') }}">My Profile</a></li>
+                            <li><a href="{{ url('history') }}">Purchased History</a></li>
+
                             @endif
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

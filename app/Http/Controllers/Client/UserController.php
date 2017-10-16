@@ -41,13 +41,13 @@ class UserController extends Controller
     public function update(Request $request)
     {
         $this->validate($request, [
-            'firstname' => 'required|alpha|max:255',
-            'lastname' => 'required|alpha|max:255',
-            'phone' => 'nullable|min:10|max:10',
+            'firstname' => 'required|string|max:255',
+            'lastname' => 'required|string|max:255',
+            'phone' => 'nullable|size:10',
             'addressline1' => 'nullable|string|max:255',
             'addressline2' => 'nullable|string|max:255',
-            'suburb' => 'nullable|alpha|max:255',
-            'state' => 'nullable|alpha|max:255',
+            'suburb' => 'nullable|string|max:255',
+            'state' => 'nullable|string|max:255',
             'postcode' => 'nullable|min:4|max:4',
         ]);
 

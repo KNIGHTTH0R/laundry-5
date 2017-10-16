@@ -5,7 +5,7 @@ Order Details
 @endsection
 
 @section('content')
-@if(count($orders) > 0 )
+@if(count($orders)>0)
 @foreach($orders as $order)
 <table class="table1">
     <tr>
@@ -52,27 +52,16 @@ Order Details
 <table>
     <tr>
         <td>
-            <form action="{{ url('user_orders/'.$order->id.'/edit') }}" method="GET">
-                <input type="submit" value="Edit" class="btn btn-default" />
-            </form>
-        </td>
-        <td>
             <form action="{{ url('user_orders/'.$order->id) }}" method="POST">
                 {{ method_field('DELETE') }}
                 {!! csrf_field() !!}
                 <input type="submit" value="Delete" class="btn btn-default" />
             </form>
         </td>
-        <td>
-            <form action="{{ url('pay/'.$order->id) }}" method="GET">
-                <input type="submit" value="Checkout" class="btn btn-default" />
-            </form>
-        </td>
-    </tr>
 </table>
 <p>-----------------------------------</p>
 @endforeach
 @else
-<h3>You don't make new order.</h3>
+<h3>You don't have order current.</h3>
 @endif
 @endsection        

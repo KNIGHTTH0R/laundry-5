@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 class OrderController extends Controller
 {
     /**
-     * Display all orders of current user
+     * Display all unpaid orders of current user
      * 
      * @param int $id
      * @return \Illuminate\Http\Response
@@ -19,10 +19,24 @@ class OrderController extends Controller
     public function index()
     {
         $user_id = Auth::id();
-        $orders = DB::select('select * from orders where user_id = ?', [$user_id]);
+        $orders = DB::select("select * from orders where user_id = ? and payment_status='unpaid'", [$user_id]);
         
         return view('client/orders', ['orders' => $orders]);
     }
+
+    /**
+     * Display all paid orders of current user
+     * 
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function history()
+    {
+        $user_id = Auth::id();
+        $orders = DB::select("select * from orders where user_id = ? and payment_status = 'paid'", [$user_id]);
+
+        return view('client/history', ['orders' => $orders]);
+    }   
 
     /**
      * Show the form for creating a new resource.
@@ -130,5 +144,5 @@ class OrderController extends Controller
             Order::find($id)->delete();
         });
         return redirect('user_orders');
-    }    
+    } 
 }

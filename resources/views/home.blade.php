@@ -78,6 +78,7 @@
                 <a href="{{ url('user_orders/show') }}">Book Order</a>
                 <a href="{{ url('user_orders')}}">My Orders</a>
                 <a href="{{ url('profile') }}">My Profile</a>
+                <a href="{{ url('history') }}">Purchased History</a>
                 @endif
                 <a href="{{ route('logout') }}" onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">Logout</a>
