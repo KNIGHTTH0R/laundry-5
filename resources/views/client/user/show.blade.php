@@ -24,10 +24,6 @@ My Profile
         <td>{{ $user->email }}</td>
     </tr>
     <tr>
-        <td>Role</td>
-        <td>{{ $user->role }}</td>
-    </tr>
-    <tr>
         <td>Phone</td>
         <td>{{ $user->phone }}</td>
     </tr>

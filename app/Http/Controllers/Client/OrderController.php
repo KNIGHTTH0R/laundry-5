@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
+
     /**
      * Display all unpaid orders of current user
      * 
@@ -18,8 +19,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $user_id = Auth::id();
-        $orders = DB::select("select * from orders where user_id = ? and payment_status='unpaid'", [$user_id]);
+        $orders = Order::where('user_id', Auth::id())->where('payment_status', 'unpaid')->get();
         
         return view('client/orders', ['orders' => $orders]);
     }
@@ -32,11 +32,10 @@ class OrderController extends Controller
      */
     public function history()
     {
-        $user_id = Auth::id();
-        $orders = DB::select("select * from orders where user_id = ? and payment_status = 'paid'", [$user_id]);
-
+        $orders = Order::where('user_id', Auth::id())->where('payment_status', 'paid')->get();
+        
         return view('client/history', ['orders' => $orders]);
-    }   
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -56,13 +55,12 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, 
-        [
+        $this->validate($request, [
             'laundry' => 'bail|required|numeric|min:0|max:100',
             'ironing' => 'bail|required|numeric|min:0|max:100',
             'pickup' => 'bail|required|date|after:tomorrow',
             'delivery' => 'bail|required|date|after:pickup',
-            'notes' => 'bail|required|alpha_dash',
+            'notes' => 'bail|nullable|string|max:255',
         ]);
 
         $order = new Order($request->all());
@@ -113,8 +111,7 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, 
-        [
+        $this->validate($request, [
             'laundry' => 'bail|required|numeric|min:0|max:100',
             'ironing' => 'bail|required|numeric|min:0|max:100',
             'pickup' => 'bail|required|date|after:tomorrow',
@@ -144,5 +141,6 @@ class OrderController extends Controller
             Order::find($id)->delete();
         });
         return redirect('user_orders');
-    } 
+    }
+
 }

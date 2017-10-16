@@ -5,7 +5,7 @@ Book an Order
 @endsection
 
 @section('content')
-
+<a href="{{ url('/') }}" class="btn btn-default">Go Homepage</a>
 <form action="{{ url('user_orders') }}" method="POST">
     {!! csrf_field() !!}
     <table class="table1">
@@ -52,6 +52,6 @@ Book an Order
             </td>
         </tr>
     </table>
-    <input type="submit" value="Submit" />
+    <input type="submit" value="Submit" class="btn btn-default" />
 </form>
 @endsection

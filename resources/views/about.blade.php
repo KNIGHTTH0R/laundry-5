@@ -14,6 +14,7 @@ About Us
 @endsection
 
 @section('content')
+<a href="{{ url('/') }}" class="btn btn-default">Go Homepage</a>
 <table style="font-family: Arial; width: 200px;">
     <tr>
         <td>Hongming Lin</td>

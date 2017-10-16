@@ -39,7 +39,7 @@ Edit User
         <tr>
             <td>Phone</td>
             <td>
-                <input type="text" name="phone" class="input-field" value="{{ $user->phone }}" />
+                <input type="number" name="phone" class="input-field" value="{{ $user->phone }}" />
                 <span class="alert">{{ $errors->first('phone') }}</span>
             </td>
         </tr>
