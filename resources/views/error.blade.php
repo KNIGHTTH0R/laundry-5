@@ -5,5 +5,5 @@ Error
 @endsection
 
 @section('content')
-<a href="{{ url('/') }}" class="btn btn-default">Go to Homepage</a>
+<a href="{{ url('/') }}" class="btn btn-default">Go Homepage</a>
 @endsection

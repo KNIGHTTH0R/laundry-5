@@ -5,6 +5,7 @@ Order Details
 @endsection
 
 @section('content')
+<a href="{{ url('/') }}" class="btn btn-default">Go Homepage</a>
 @if(count($orders) > 0 )
 @foreach($orders as $order)
 <table class="table1">

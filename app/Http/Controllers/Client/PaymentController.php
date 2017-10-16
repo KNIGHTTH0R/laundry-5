@@ -12,6 +12,7 @@ use Validator;
 
 class PaymentController extends Controller
 {
+
     //
     public function pay($id)
     {
@@ -20,26 +21,29 @@ class PaymentController extends Controller
 
     public function overview(Request $request, $id)
     {
-        $this->validate($request,[
-            'firstname' => 'bail|required|alpha|max:255',
-            'lastname' => 'bail|required|alpha|max:255',
-            'email' => 'bail|required|email|max:255',
-            'phone' => 'bail|required|integer|digits_between:10,10',
-            'addressline1' => 'bail|required|string|max:255',
-            'suburb' => 'bail|required|alpha_num|max:255',
-            'state' => 'bail|required|alpha_num|max:255',
-            'postcode' => 'bail|required|integer|digits_between:4,4',
-            'card_number' => 'bail|required|integer|digits_between:16,16',
-            'expiration_date' => 'bail|required|after_or_equal:tomorrow',
-            'cw' => 'bail|required|integer|digits_between:3,3',
+        $this->validate($request, [
+            'firstname' => 'required|alpha|max:255',
+            'lastname' => 'required|alpha|max:255',
+            'phone' => 'required|numeric|digits:10',
+            'addressline1' => 'required|string|max:255',
+            'addressline2' => 'nullable|string|max:255',
+            'suburb' => 'required|alpha_num|max:255',
+            'state' => 'required|alpha_num|max:255',
+            'postcode' => 'required|numeric|digits:4',
+            'card_type' => 'required|alpha',
+            'card_number' => 'required|numeric|digits:16',
+            'expiration_date' => 'required|after_or_equal:today',
+            'cw' => 'required|numeric|digits_between:3,3',
         ]);
 
-        DB::transaction(function() use ($id) {
+        DB::transaction(function() use ($request, $id) {
+            Auth::user()->fill($request->all())->update();
             $order = Order::find($id);
             $order->payment_status = "paid";
             $order->update();
         });
 
-        return view('client/overview', ['bill' => $request], ['order' => Order::find($id)] );
+        return view('client/overview', ['bill' => $request], ['order' => Order::find($id)]);
     }
+
 }
